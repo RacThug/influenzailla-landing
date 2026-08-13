@@ -1,0 +1,7 @@
+# Coding guideline requires CR+LF newlines in every source file.
+* text=auto eol=crlf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
