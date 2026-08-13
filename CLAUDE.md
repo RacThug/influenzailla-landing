@@ -6,6 +6,21 @@ client coding guideline - follow them without re-reading the source document.
 > The client brief forbids mentioning the client company anywhere in the code result.
 > Keep company names, project names, and recruiter emails out of every committed file.
 
+## Git workflow
+
+**Never commit directly to `main`.** `main` only ever advances through a merged pull request.
+
+Every change, however small, follows the same path:
+
+1. Branch off `main`: `git checkout -b feature/<short-description>`
+2. Commit the work on that branch
+3. Push and open a PR against `main`
+4. Merge through the PR
+
+This applies to the first commit of a session too - check the current branch before editing.
+If work has already started on `main` by mistake, move the commits onto a branch and rewind
+`main` rather than pushing them.
+
 ## Stack constraints
 
 - Only HTML, CSS, and JavaScript. No build step, no framework.
