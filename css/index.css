@@ -418,7 +418,8 @@ h3 {
 
 .tab {
   flex: 1 1 0;
-  padding: 1.6rem 0.8rem;
+  min-width: 0;
+  padding: 1.6rem 0.4rem;
   border-left: var(--border-width) solid var(--color-border);
   font-family: var(--font-display);
   font-weight: var(--font-weight-light);
@@ -431,7 +432,7 @@ h3 {
 .tab:first-child {
   border-left: none;
   text-align: left;
-  padding-left: 1.6rem;
+  padding-left: 1rem;
 }
 
 .tab.is-active {
@@ -445,7 +446,7 @@ h3 {
 }
 
 .tab-art {
-  width: 4.9rem;
+  width: auto;
   height: 4.9rem;
 }
 
@@ -717,10 +718,12 @@ h3 {
   /* box-sizing is border-box, so the cap is canvas width and the
      padding carves the 95px margins out of it, leaving exactly
      the 1250px container. */
+  /* 6.6% == 95px at 1440, and keeps the side margins proportional
+     below it instead of eating the viewport. */
   .wrapper,
   .hero-body {
     max-width: var(--layout-canvas);
-    padding: 0 var(--layout-margin);
+    padding: 0 6.6%;
   }
 
   a,
@@ -748,7 +751,7 @@ h3 {
     top: 0;
     left: 50%;
     max-width: var(--layout-canvas);
-    padding: 4.8rem var(--layout-margin) 0;
+    padding: 4.8rem 6.6% 0;
     transform: translateX(-50%);
   }
 
@@ -759,26 +762,30 @@ h3 {
   }
 
   .logo {
-    flex: 0 0 var(--size-logo-width);
+    flex: 0 0 34.56%;
+    min-width: 0;
     gap: 0;
     padding: 0;
     border: var(--border-width) solid var(--color-border);
   }
 
   .logo-mark {
-    margin-left: 2.9rem;
+    flex: none;
+    margin-left: 6.71%;
     width: var(--size-icon-star-md);
     height: var(--size-icon-star-md);
   }
 
   .logo-name {
-    margin-left: 0.4rem;
+    flex: none;
+    margin-left: 0.93%;
   }
 
   .logo-tagline {
     display: block;
-    margin-left: 5.1rem;
-    width: 13.5rem;
+    flex: 0 1 auto;
+    margin-left: 11.8%;
+    width: 31.25%;
     font-family: var(--font-display);
     font-weight: var(--font-weight-semibold);
     font-size: var(--font-size-10);
@@ -793,7 +800,9 @@ h3 {
 
   .site-nav {
     display: flex;
+    flex: 1 1 auto;
     flex-direction: column;
+    min-width: 0;
     margin-left: -0.2rem;
   }
 
@@ -821,15 +830,21 @@ h3 {
     color: var(--color-text-primary);
   }
 
-  .nav-item-about    { width: 15.7rem; }
-  .nav-item-services { width: 24.8rem; }
-  .nav-item-cases    { width: 19.96rem; }
-  .nav-item-team     { width: 15.5rem; }
-  .nav-item-lang     { width: 6.7rem; }
-  .nav-item-boost    { width: 29.1rem; }
-  .nav-item-products { width: 20.8rem; }
-  .nav-item-book     { width: 13.4rem; }
-  .nav-item-blog     { width: 19.2rem; }
+  /* Percentages of the 819px nav, so the row keeps the design's
+     proportions at any width instead of overflowing below 1440. */
+  .nav-item {
+    flex: none;
+  }
+
+  .nav-item-about    { width: 19.17%; }
+  .nav-item-services { width: 30.28%; }
+  .nav-item-cases    { width: 24.37%; }
+  .nav-item-team     { width: 18.93%; }
+  .nav-item-lang     { width: 8.18%; }
+  .nav-item-boost    { width: 35.53%; }
+  .nav-item-products { width: 25.40%; }
+  .nav-item-book     { width: 16.36%; }
+  .nav-item-blog     { width: 23.44%; }
 
   .nav-item-lang img {
     width: 1.6rem;
@@ -856,7 +871,7 @@ h3 {
 
   .hero-year {
     top: 40.5rem;
-    left: var(--layout-margin);
+    left: 6.6%;
     margin-top: 0;
     padding-right: 0;
     font-size: var(--font-size-27);
@@ -866,38 +881,38 @@ h3 {
   .hero-greeting {
     top: 40.7rem;
     right: auto;
-    left: 20.6rem;
-    width: 8.2rem;
+    left: 14.31%;
+    width: 5.7%;
   }
 
   .squiggle-hero {
     top: 48.7rem;
-    left: 39.1rem;
+    left: 27.15%;
     margin-top: 0;
     padding-right: 0;
   }
 
   .hero-title {
     top: 50.4rem;
-    left: var(--layout-margin);
+    left: 6.6%;
     margin-top: 0;
-    width: 70.9rem;
+    width: 49.24%;
     font-size: var(--font-size-54);
   }
 
   .hero-lede {
     top: 58.8rem;
-    left: 43.2rem;
+    left: 30%;
     margin-top: 0;
-    width: 30rem;
+    width: 20.83%;
     font-size: var(--font-size-16);
   }
 
   .hero-aside {
     top: 51rem;
-    left: 110.4rem;
+    left: 76.67%;
     margin-top: 0;
-    width: 21.6rem;
+    width: 15%;
   }
 
   .hero-aside p {
@@ -918,13 +933,13 @@ h3 {
 
   .section-links-list {
     grid-template-columns: repeat(4, 1fr);
-    gap: 0 var(--layout-gutter);
+    gap: 0 7.68%;
     padding-top: 8rem;
   }
 
   .section-links-list a {
     padding-bottom: 2.4rem;
-    width: var(--size-divider-width);
+    width: 100%;
     font-size: var(--font-size-15);
   }
 
@@ -936,20 +951,20 @@ h3 {
   .intro-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0 var(--layout-gutter);
+    gap: 0 7.68%;
   }
 
   .intro-eyebrow {
     position: absolute;
     top: 7.9rem;
-    left: var(--layout-margin);
+    left: 6.6%;
     margin-top: 0;
   }
 
   .intro-lede {
     grid-column: 2 / span 2;
     grid-row: 1 / span 2;
-    width: 43.2rem;
+    width: 74.87%;
   }
 
   /* Explicit width: the design's heading blocks do not line up
@@ -959,7 +974,7 @@ h3 {
     grid-column: 1 / span 3;
     grid-row: 3;
     margin-top: 3.1rem;
-    width: 70.96rem;
+    width: 77.72%;
   }
 
   .intro-squiggle {
@@ -972,7 +987,7 @@ h3 {
     grid-column: 2 / span 2;
     grid-row: 5;
     margin-top: 0.4rem;
-    width: 43.2rem;
+    width: 74.87%;
   }
 
   .intro-stars {
@@ -988,7 +1003,7 @@ h3 {
     grid-row: 3 / span 3;
     align-self: start;
     margin-top: 8.9rem;
-    width: var(--size-since-box-width);
+    width: 100%;
     height: var(--size-since-box-height);
     background: var(--color-surface);
   }
@@ -1038,14 +1053,14 @@ h3 {
   .objectives-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0 var(--layout-gutter);
+    gap: 0 7.68%;
   }
 
   .objectives-title {
     grid-column: 1 / span 3;
     grid-row: 1;
     margin-top: 1.5rem;
-    width: 78rem;
+    width: 85.39%;
   }
 
   /* Design x=591; column 2 starts at 432, hence the 15.9rem nudge. */
@@ -1053,7 +1068,7 @@ h3 {
     grid-column: 2 / span 2;
     grid-row: 1;
     margin-top: 0;
-    margin-left: 15.9rem;
+    margin-left: 27.56%;
   }
 
   .objectives-eyebrow {
@@ -1068,7 +1083,7 @@ h3 {
     grid-column: 2 / span 2;
     grid-row: 2;
     margin-top: 7.4rem;
-    width: 37.3rem;
+    width: 64.64%;
   }
 
   /* Design x=914 w=432, which lands flush with the container's
@@ -1078,7 +1093,7 @@ h3 {
     grid-row: 2;
     justify-self: end;
     margin-top: 7.4rem;
-    width: 43.2rem;
+    width: 74.87%;
   }
 
   .objectives-tabs {
@@ -1097,7 +1112,7 @@ h3 {
     grid-column: 2 / span 2;
     grid-row: 4;
     margin-top: 2.1rem;
-    width: 43.2rem;
+    width: 74.87%;
   }
 
   .tab-list {
@@ -1105,11 +1120,13 @@ h3 {
   }
 
   .tab {
-    flex: 0 0 var(--size-card-tab-width);
+    flex: 0 0 33.5%;
     height: var(--size-card-tab-height);
-    padding: 0 0 0 5.1rem;
+    padding: 0 0 0 5.58%;
     border: var(--border-width) solid var(--color-border);
-    font-size: var(--font-size-30);
+    /* Hits exactly 30px at 1440; shrinks below that so the longest
+       label ("Marketing") cannot overflow its cell. */
+    font-size: clamp(1.6rem, 2.2vw, 3rem);
     text-align: left;
   }
 
@@ -1119,22 +1136,25 @@ h3 {
 
   .tab:first-child {
     border-left: var(--border-width) solid var(--color-border);
-    padding-left: 5.1rem;
+    padding-left: 5.58%;
   }
 
   .tab-panel {
     display: grid;
-    grid-template-columns: 25.2rem 1fr;
+    grid-template-columns: 22.55% 1fr;
     gap: 0 5.9rem;
     margin-top: -0.2rem;
     height: var(--size-card-panel-height);
-    padding: 2.7rem 5.1rem 0;
+    padding: 2.7rem 5.58% 0;
     border: var(--border-width) solid var(--color-border);
   }
 
+  /* The three illustrations hold 1, 2 and 3 spheres, so they have
+     different widths. Pin the height to one sphere diameter and let
+     the width follow. */
   .tab-art {
     grid-column: 1;
-    width: var(--size-avatar);
+    width: auto;
     height: var(--size-avatar);
   }
 
@@ -1165,7 +1185,7 @@ h3 {
 
   .expertise-grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 0 var(--layout-gutter);
+    gap: 0 7.68%;
   }
 
   .expertise-greeting-1 {
@@ -1189,7 +1209,7 @@ h3 {
     grid-column: 1 / span 3;
     grid-row: 2;
     margin-top: 32.8rem;
-    width: 70.9rem;
+    width: 77.61%;
   }
 
   .expertise-squiggle {
@@ -1204,7 +1224,7 @@ h3 {
     grid-row: 2;
     align-self: end;
     margin-top: 0;
-    max-width: 35rem;
+    max-width: 60.66%;
   }
 
   .expertise-stars {
@@ -1217,7 +1237,7 @@ h3 {
     grid-column: 2 / span 2;
     grid-row: 3;
     margin-top: 15.9rem;
-    width: 43.2rem;
+    width: 74.87%;
   }
 
   .expertise-col-2 {
@@ -1225,7 +1245,7 @@ h3 {
     grid-row: 3;
     justify-self: end;
     margin-top: 15rem;
-    width: 43.2rem;
+    width: 74.87%;
   }
 
   /* ---------- Projects ---------- */
@@ -1244,13 +1264,13 @@ h3 {
 
   .projects-head {
     position: relative;
-    width: 49.5rem;
+    width: 39.6%;
   }
 
   .projects-squiggle {
     position: absolute;
     top: -1rem;
-    left: 38.2rem;
+    left: 77.17%;
     margin-top: 0;
   }
 
@@ -1283,7 +1303,7 @@ h3 {
     justify-content: flex-start;
     gap: 0;
     margin-top: 1.1rem;
-    padding-left: 50.9rem;
+    padding-left: 40.72%;
   }
 
   .slider-arrow {
@@ -1316,7 +1336,7 @@ h3 {
   }
 
   .site-footer .logo {
-    flex: 0 0 var(--size-logo-width);
+    flex: 0 0 34.56%;
     justify-content: flex-start;
     border-bottom: var(--border-width) solid var(--color-border);
   }
