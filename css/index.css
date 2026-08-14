@@ -107,7 +107,7 @@ h3 {
 .squiggle {
   font-family: var(--font-display);
   font-weight: var(--font-weight-light);
-  font-size: var(--font-size-28);
+  font-size: var(--font-size-48);
   line-height: var(--line-height-none);
   letter-spacing: var(--letter-spacing-squiggle);
   white-space: nowrap;
@@ -146,7 +146,7 @@ h3 {
   display: flex;
   align-items: center;
   gap: 1.2rem;
-  padding: 1.6rem 2rem;
+  padding: 1.5rem 2rem;
 }
 
 .logo-mark {
@@ -217,25 +217,26 @@ h3 {
 
 .hero-greeting {
   position: absolute;
-  top: 7.4rem;
+  top: 0.8rem;
   right: 0.5rem;
   width: 8.2rem;
   font-size: var(--font-size-12);
 }
 
 .squiggle-hero {
-  margin-top: 2rem;
+  margin-top: 4.4rem;
   padding-right: 9.3rem;
   text-align: right;
 }
 
 .hero-title {
-  margin-top: 0.6rem;
+  margin-top: -2.2rem;
   font-size: var(--font-size-32);
 }
 
 .hero-lede {
-  margin-top: 1.6rem;
+  margin-top: 0.8rem;
+  max-width: 20rem;
   font-family: var(--font-display);
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-14);
@@ -260,7 +261,7 @@ h3 {
 .section-links {
   position: relative;
   z-index: 1;
-  margin-top: 5rem;
+  margin-top: 8rem;
   padding: 3rem 0;
 }
 
@@ -316,7 +317,7 @@ h3 {
 }
 
 .intro-squiggle {
-  margin-top: -0.8rem;
+  margin-top: -2.8rem;
 }
 
 .intro-body {
@@ -375,11 +376,43 @@ h3 {
 }
 
 .objectives-squiggle {
-  margin-top: -0.8rem;
+  margin-top: -2.8rem;
 }
 
+/* Mobile runs a different order from desktop: the closing
+   paragraph sits above the tabs, and the two-column body below
+   them. Matches page-mobile.png. */
 .objectives-eyebrow {
-  order: -1;
+  order: 1;
+}
+
+.objectives-title {
+  order: 2;
+}
+
+.objectives-squiggle {
+  order: 3;
+}
+
+.objectives-outro {
+  order: 4;
+}
+
+.objectives-tabs {
+  order: 5;
+}
+
+.objectives-star {
+  order: 6;
+}
+
+.objectives-col-1 {
+  order: 7;
+}
+
+/* The design's mobile page does not carry this column at all. */
+.objectives-col-2 {
+  display: none;
 }
 
 .objectives-grid {
@@ -396,11 +429,11 @@ h3 {
 }
 
 .objectives-tabs {
-  margin-top: 4rem;
+  margin-top: 6.5rem;
 }
 
 .objectives-col-1 {
-  margin-top: 4rem;
+  margin-top: 1.2rem;
 }
 
 .objectives-col-2 {
@@ -408,7 +441,7 @@ h3 {
 }
 
 .objectives-star {
-  margin-top: 4rem;
+  margin-top: 5.7rem;
 }
 
 .tab-list {
@@ -465,7 +498,7 @@ h3 {
 .expertise {
   position: relative;
   margin-top: 6rem;
-  padding: 6rem 0;
+  padding: 5rem 0 6rem;
 }
 
 .expertise-bg {
@@ -488,6 +521,7 @@ h3 {
 .expertise-greeting-1,
 .expertise-greeting-2 {
   grid-column: span 1;
+  width: 8.2rem;
 }
 
 .expertise-greeting-3 {
@@ -500,7 +534,7 @@ h3 {
 
 .expertise-title {
   grid-column: 1 / -1;
-  margin-top: 5rem;
+  margin-top: 7rem;
 }
 
 .expertise-squiggle {
@@ -511,6 +545,7 @@ h3 {
 .expertise-lede {
   grid-column: 1 / -1;
   margin-top: 3rem;
+  max-width: 25rem;
 }
 
 .expertise-stars {
@@ -523,33 +558,51 @@ h3 {
   margin-top: 3rem;
 }
 
+/* Like objectives-col-2, the design's mobile page drops this
+   column entirely. */
 .expertise-col-2 {
-  grid-column: 1 / -1;
-  margin-top: 1.7rem;
+  display: none;
 }
 
 /* =========================================================
    13. Projects slider
    ========================================================= */
 .projects {
-  padding: 6rem 0 5rem;
+  padding: 3.5rem 0 5rem;
+}
+
+/* This is the one section where the design puts the wave above
+   the heading rather than under it. */
+.projects-head {
+  display: flex;
+  flex-direction: column;
 }
 
 .projects-squiggle {
-  margin-top: -0.8rem;
+  order: -1;
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+}
+
+.projects-head .section-title {
+  max-width: 25rem;
 }
 
 .slider {
-  margin-top: 4rem;
+  margin-top: 1.8rem;
 }
 
 .slider-viewport {
   overflow: hidden;
   width: 100%;
+  transition: height 0.4s ease;
 }
 
+/* flex-start keeps each slide at its own height, so the viewport can
+   size to the active one rather than to the tallest. */
 .slider-track {
   display: flex;
+  align-items: flex-start;
   transition: transform 0.4s ease;
 }
 
@@ -741,10 +794,6 @@ h3 {
     font-size: var(--font-size-54);
   }
 
-  .squiggle {
-    font-size: var(--font-size-48);
-  }
-
   /* ---------- Header ---------- */
   .site-header {
     position: absolute;
@@ -905,6 +954,7 @@ h3 {
     left: 30%;
     margin-top: 0;
     width: 20.83%;
+    max-width: none;
     font-size: var(--font-size-16);
   }
 
@@ -1096,6 +1146,7 @@ h3 {
   /* Design x=914 w=432, which lands flush with the container's
      right edge rather than on a column line. */
   .objectives-col-2 {
+    display: block;
     grid-column: 3 / span 2;
     grid-row: 2;
     justify-self: end;
@@ -1198,11 +1249,13 @@ h3 {
   .expertise-greeting-1 {
     grid-column: 1;
     grid-row: 1;
+    width: auto;
   }
 
   .expertise-greeting-2 {
     grid-column: 3;
     grid-row: 1;
+    width: auto;
   }
 
   .expertise-greeting-3 {
@@ -1231,6 +1284,7 @@ h3 {
     grid-row: 2;
     align-self: end;
     margin-top: 0;
+    width: auto;
     max-width: 60.66%;
   }
 
@@ -1248,6 +1302,7 @@ h3 {
   }
 
   .expertise-col-2 {
+    display: block;
     grid-column: 3 / span 2;
     grid-row: 3;
     justify-self: end;
@@ -1270,8 +1325,13 @@ h3 {
   }
 
   .projects-head {
+    display: block;
     position: relative;
     width: 39.6%;
+  }
+
+  .projects-head .section-title {
+    max-width: none;
   }
 
   .projects-squiggle {
