@@ -135,6 +135,55 @@ Naming: `[type]_[name]_[NN].[ext]`, lowercase only. `name` and `NN` are optional
 | General | `img_access_01.jpg` |
 | Button | `btn_cancel.png` |
 
+## Component behavior
+
+From the Figma "Direction" page. The desktop design page shows only the resting state, so it
+is not a sufficient reference on its own.
+
+### Container width
+
+Any section that does not fill the screen is capped: **1250px** on desktop, **335px** on mobile.
+This is an explicit instruction, not a measurement. `.wrapper` implements it.
+
+### Tabbing section - Branding / Design / Marketing
+
+Three tabs sharing one panel. The active tab title carries the full brand gradient; the other
+two drop to `--opacity-inactive` (0.3). Each tab swaps both the illustration and the two text
+columns:
+
+| Tab | Illustration | Left text | Right text |
+| --- | --- | --- | --- |
+| Branding | 1 sphere | Our team of experts specializes in creating unique and effective designs | We created marketing materials that were consistent with the new brand identity, such as business cards, brochures, and social media graphics. |
+| Design | 2 spheres | Innovative and effective design solutions for business of our clients | We partnered with a technology startup to create a new website that would showcase their innovative product and attract investors. |
+| Marketing | 3 spheres | Our team of experienced designers and marketing professionals work closely | We provided the brand with a detailed social media strategy that outlined how they could continue to grow their following and engage with their audience in the future. |
+
+### Projects slider
+
+Three slides of two cards each. Navigation is prev/next buttons; pagination is three dots
+marking the current slide.
+
+| Slide | Left card | Right card |
+| --- | --- | --- |
+| 1 | branding - Food store identity | web design - Technology startup site |
+| 2 | marketing - Fashion instagram marketing | development - Mobile and desktop services |
+| 3 | branding - Eco packaging design | marketing - Social media graphics |
+
+Slides 2 and 3 exist only on the Direction page. Building from the desktop page alone would
+ship a slider with a single slide.
+
+### Mobile navigation
+
+The header collapses to logo + `MENU`. Opening it replaces the header with a full-width
+overlay: logo + `Close`, then ABOUT, SERVICES, CASES, TEAM, BOOST PROGRAM, PRODUCTS, BOOK,
+BLOG stacked as full-width bordered rows, with a globe icon row last.
+
+## Analytics
+
+Only the four section links - **About us, Expertise, Get started, What we do** - are marked
+for tracking. A pixel scan of the Analytics page found exactly one red annotation region,
+covering that row and nothing else. The header and footer nav are *not* marked; their reddish
+appearance in the export is the background gradient showing through transparent buttons.
+
 ## Browsers
 
 - PC: latest Chrome, Firefox, Edge. Firefox and Edge are the graded targets.
@@ -148,5 +197,5 @@ and colors exactly - do not round or approximate. Design widths: Full HD desktop
 
 ## Analytics
 
-Buttons and links flagged on the Figma "Analytics" page must fire GA4 events via GTM.
-Keep the GTM container snippet in `index.html` and event wiring in `js/index.js`.
+The four links listed under "Analytics" above must fire GA4 events via GTM. Keep the GTM
+container snippet in `index.html` and event wiring in `js/index.js`.

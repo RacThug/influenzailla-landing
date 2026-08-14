@@ -110,13 +110,26 @@
     "$type": "dimension",
     "$description": "The desktop grid. 96 margin + 4 columns of 240 + 3 gutters of 96 = 1440.",
     "canvas": { "$value": "1440px", "$description": "Desktop design width." },
-    "container": { "$value": "1248px", "$description": "Content width inside the page margins." },
-    "margin": { "$value": "96px", "$description": "Page side margin. Column origins are 96, 432, 768, 1104." },
+    "container": {
+      "$value": "1250px",
+      "$description": "Max width for any section that does not fill the screen. Stated explicitly on the Direction page, not measured - the frames in the design itself wobble between 1249 and 1250.",
+      "$extensions": { "source": "docs/figma/page-direction-width-guideline-desktop.png" }
+    },
+    "margin": {
+      "$value": "95px",
+      "$description": "(1440 - 1250) / 2. Column origins in the design read 96, 432, 768, 1104, so individual frames sit 1px off; the container is what governs."
+    },
     "column": { "$value": "240px" },
     "gutter": { "$value": "96px" },
     "column-step": { "$value": "336px", "$description": "column + gutter." },
-    "half": { "$value": "624px", "$description": "Half the container - the 2-up card width." },
-    "mobile": { "$value": "375px", "$description": "iPhone SE, the mobile design width named in the brief." }
+    "half": { "$value": "625px", "$description": "Half the container - the 2-up card width." },
+    "mobile": { "$value": "375px", "$description": "iPhone SE, the mobile design width named in the brief." },
+    "container-mobile": {
+      "$value": "335px",
+      "$description": "Mobile equivalent of the container rule, stated on the Direction page.",
+      "$extensions": { "source": "docs/figma/page-direction-width-guideline-mobile.png" }
+    },
+    "margin-mobile": { "$value": "20px", "$description": "(375 - 335) / 2." }
   },
   "spacing": {
     "$type": "dimension",
