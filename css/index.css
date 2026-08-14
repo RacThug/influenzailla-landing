@@ -1379,12 +1379,12 @@ h3 {
     height: var(--size-icon-arrow);
   }
 
-  .slider-prev img {
-    transform: rotate(-90deg);
-  }
-
+  /* ico_arrow.svg is already the prev button: a left chevron inside a
+     bracket whose stroke fades to the right. Mirroring it gives the
+     next button, which rotating would not - it would carry the fade
+     round with it. */
   .slider-next img {
-    transform: rotate(90deg);
+    transform: scaleX(-1);
   }
 
   .slider-dots {
