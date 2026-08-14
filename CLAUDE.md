@@ -40,12 +40,32 @@ If work has already started on `main` by mistake, move the commits onto a branch
 
 ```
 root - index.html
-       css - index.css
+       design-tokens.json
+       css - design-tokens.css
+             index.css
        images
        js
 ```
 
 Do not add directories outside this shape. `docs/` holds the source briefs and is gitignored.
+
+## Design tokens
+
+`design-tokens.json` is the source of truth; `css/design-tokens.css` mirrors it as custom
+properties and is linked **before** `index.css`. Change the JSON first, then the CSS.
+
+The Figma file defines no Figma Variables, so every token was measured from the applied styles
+and carries the originating node id in `$extensions`.
+
+- Never hardcode a color, font size, or spacing value that a token already covers.
+- Font sizes map 1:1 from Figma px to rem because the root is 62.5%: 54px is `--font-size-54`
+  (5.4rem).
+- The brand gradient is a `background-clip: text` fill used on almost every heading. Use the
+  `.text-gradient` class, do not re-declare the four properties.
+- Body copy is `--color-text-muted` (#e4e4e4); headings and nav are `--color-text-primary`.
+- Every outlined box is a 2px solid white border with zero corner radius.
+- The desktop grid is 96px margin + 4 columns of 240px + 3 gutters of 96px = 1440px.
+  Column origins: 96, 432, 768, 1104.
 
 ## HTML
 

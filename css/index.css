@@ -40,14 +40,10 @@ button {
 
 /* =========================================================
    2. Variables
+   All tokens live in design-tokens.css, which is linked
+   before this file. Only page-level derived values belong
+   here.
    ========================================================= */
-:root {
-  --color-text: #000000;
-  --color-bg: #ffffff;
-  --font-base: "Inter", "Unbounded", sans-serif;
-  --hover-opacity: 0.5;
-  --hover-speed: 0.2s;
-}
 
 /* =========================================================
    3. Base
@@ -59,12 +55,23 @@ html {
 
 body {
   width: 100%;
-  background: var(--color-bg);
-  font-family: var(--font-base);
-  font-size: 1.6rem;
-  line-height: 1.6;
-  color: var(--color-text);
+  background: var(--color-background);
+  font-family: var(--font-body);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-body);
+  color: var(--color-text-muted);
   -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-light);
+  font-size: inherit;
+  line-height: var(--line-height-display);
+  color: var(--color-text-primary);
 }
 
 /* =========================================================
@@ -73,7 +80,7 @@ body {
 .wrapper {
   width: 100%;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 var(--space-16);
 }
 
 /* =========================================================
@@ -82,20 +89,25 @@ body {
 
 /* =========================================================
    6. PC - min-width 768px
+   The breakpoint is literal because CSS cannot read a custom
+   property inside a media query. It mirrors --breakpoint-pc.
    ========================================================= */
 @media (min-width: 768px) {
+  /* box-sizing is border-box, so the cap is canvas width and the
+     padding carves the 96px margins out of it, leaving exactly
+     the 1248px container. */
   .wrapper {
-    max-width: 120rem;
-    padding: 0 4rem;
+    max-width: var(--layout-canvas);
+    padding: 0 var(--layout-margin);
   }
 
   a,
   button {
-    transition: opacity var(--hover-speed);
+    transition: opacity var(--duration-hover);
   }
 
   a:hover,
   button:hover {
-    opacity: var(--hover-opacity);
+    opacity: var(--opacity-hover);
   }
 }
