@@ -145,19 +145,17 @@ is not a sufficient reference on its own.
 Any section that does not fill the screen is capped: **1250px** on desktop, **335px** on mobile.
 This is an explicit instruction, not a measurement. `.wrapper` implements it.
 
-### Alignment exception - the "3d" section
+### The "3d" section is aligned like every other section
 
 The section headed *"We turn your digital dreams into reality"* (Figma frame `3d`, node
-`506:376`, the one with the "since 2006" box) starts at **x=69 on desktop**, not the 95 that
-the centered container would give. Every other section starts at 96.
+`506:376`, the one with the "since 2006" box) sits at **x=69 on the Design - Desktop page**
+while every other section sits at 96. The Direction page places the same frame at 96.
 
-This is deliberate, and decided: **follow the Design - Desktop page and keep it at 69.** The
-grading compares the result to that page pixel by pixel, so matching it beats "fixing" it.
-Do not normalise this section to the container - it is not a bug in our code.
+**Decided: align it with the container like everything else.** The x=69 placement is treated
+as a mistake in the design file, not as intent. The frame is 1250px wide either way - only its
+position differs - and the Direction page, which carries the rules, has it aligned.
 
-Measured evidence: text left edge is x=70 on Design - Desktop and x=96 on Direction, while
-the control row ("About us") sits at x=96 on both. The frame is 1250px wide either way, so
-only its position differs. Mobile is unaffected.
+Do not reintroduce a negative offset on `.intro-grid`. Mobile was never affected.
 
 ### Tabbing section - Branding / Design / Marketing
 
