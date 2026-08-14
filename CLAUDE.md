@@ -145,6 +145,20 @@ is not a sufficient reference on its own.
 Any section that does not fill the screen is capped: **1250px** on desktop, **335px** on mobile.
 This is an explicit instruction, not a measurement. `.wrapper` implements it.
 
+### Alignment exception - the "3d" section
+
+The section headed *"We turn your digital dreams into reality"* (Figma frame `3d`, node
+`506:376`, the one with the "since 2006" box) starts at **x=69 on desktop**, not the 95 that
+the centered container would give. Every other section starts at 96.
+
+This is deliberate, and decided: **follow the Design - Desktop page and keep it at 69.** The
+grading compares the result to that page pixel by pixel, so matching it beats "fixing" it.
+Do not normalise this section to the container - it is not a bug in our code.
+
+Measured evidence: text left edge is x=70 on Design - Desktop and x=96 on Direction, while
+the control row ("About us") sits at x=96 on both. The frame is 1250px wide either way, so
+only its position differs. Mobile is unaffected.
+
 ### Tabbing section - Branding / Design / Marketing
 
 Three tabs sharing one panel. The active tab title carries the full brand gradient; the other
