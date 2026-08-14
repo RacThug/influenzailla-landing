@@ -986,7 +986,7 @@ h3 {
   .intro-body {
     grid-column: 2 / span 2;
     grid-row: 5;
-    margin-top: 0.4rem;
+    margin-top: 0.9rem;
     width: 74.87%;
   }
 
@@ -1038,6 +1038,13 @@ h3 {
   .step {
     padding: 10.4rem 4.8rem 0;
     height: 28.8rem;
+  }
+
+  /* 40px at 1.25 gives the 50px box the design has, which is also
+     what puts the body text below it at the right height. */
+  .step-number {
+    font-size: var(--font-size-40);
+    line-height: var(--line-height-display);
   }
 
   .step-text {
@@ -1289,7 +1296,7 @@ h3 {
   }
 
   .project-title {
-    margin-top: 3.3rem;
+    margin-top: 5.3rem;
     max-width: 28.8rem;
     font-size: var(--font-size-40);
   }
@@ -1333,6 +1340,17 @@ h3 {
 
   .site-footer .header-inner {
     flex-wrap: nowrap;
+  }
+
+  /* The footer repeats the header's markup but the design fills its
+     type with the brand gradient instead of white. */
+  .site-footer .logo-name,
+  .site-footer .logo-tagline,
+  .site-footer .nav-item a {
+    background: var(--gradient-brand);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
   }
 
   .site-footer .logo {
