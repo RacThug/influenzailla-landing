@@ -11,17 +11,314 @@
 <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-  <header class="site-header">
-    <!-- header content -->
-  </header>
+  <!-- ============================================================
+       Hero - the header sits on top of the hero artwork, and the
+       section-link band is the bottom strip of the same block.
+       ============================================================ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
 
-  <main class="site-main">
-    <!-- page sections -->
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="logo" href="#">
+          <img class="logo-mark" src="images/ico_star.svg" alt="Influenzailla">
+          <span class="logo-name">Influenzailla</span>
+          <span class="logo-tagline">bespoke design and marketing services</span>
+        </a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">MENU</button>
+
+        <nav class="site-nav" aria-label="Main">
+          <ul class="nav-row">
+            <li class="nav-item nav-item-about"><a href="#">ABOUT</a></li>
+            <li class="nav-item nav-item-services"><a href="#">SERVICES</a></li>
+            <li class="nav-item nav-item-cases"><a href="#">CASES</a></li>
+            <li class="nav-item nav-item-team"><a href="#">TEAM</a></li>
+            <li class="nav-item nav-item-lang">
+              <a href="#" aria-label="Language"><img src="images/ico_globe.svg" alt="Language"></a>
+            </li>
+          </ul>
+          <ul class="nav-row">
+            <li class="nav-item nav-item-boost"><a href="#">BOOST PROGRAM</a></li>
+            <li class="nav-item nav-item-products"><a href="#">PRODUCTS</a></li>
+            <li class="nav-item nav-item-book"><a href="#">BOOK</a></li>
+            <li class="nav-item nav-item-blog"><a href="#">BLOG</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="hero-body">
+      <p class="hero-year text-gradient">2023</p>
+      <p class="hero-greeting text-gradient">hi there, let&rsquo;s get started!</p>
+      <p class="squiggle squiggle-hero text-gradient" aria-hidden="true">&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;</p>
+      <h1 class="hero-title text-gradient">Influence your audience</h1>
+      <p class="hero-lede">boost your brand with our marketing expertise</p>
+      <div class="hero-aside">
+        <img class="icon-star" src="images/ico_star.svg" alt="">
+        <p class="text-gradient">We believe in the power of digital media to transform businesses and connect them with their audiences in meaningful ways.</p>
+      </div>
+    </div>
+
+    <div class="section-links">
+      <div class="wrapper">
+        <ul class="section-links-list">
+          <li><a class="text-gradient" href="#intro" data-track="about-us">About us</a></li>
+          <li><a class="text-gradient" href="#objectives" data-track="expertise">Expertise</a></li>
+          <li><a class="text-gradient" href="#expertise" data-track="get-started">Get started</a></li>
+          <li><a class="text-gradient" href="#projects" data-track="what-we-do">What we do</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- ==========================================================
+         Intro. Figma frame "3d". Deliberately offset to x=69 on
+         desktop - see CLAUDE.md, this is not a bug.
+         ========================================================== -->
+    <section class="intro" id="intro">
+      <div class="wrapper intro-grid">
+        <!-- Mobile stacks the lede above the eyebrow; on desktop both
+             are placed explicitly, so DOM order follows mobile. -->
+        <div class="intro-lede">
+          <p>Our creative design bureau is based in the heart of London and specializes in digital branding, website design, and influence marketing.</p>
+          <p>We believe in the power of digital media to transform businesses and connect them with their audiences in meaningful ways.</p>
+        </div>
+        <p class="eyebrow text-gradient intro-eyebrow">London 2006</p>
+        <h2 class="section-title text-gradient intro-title">We turn your digital dreams into reality</h2>
+        <p class="squiggle intro-squiggle text-gradient" aria-hidden="true">&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;</p>
+        <div class="intro-body">
+          <p>Our team of experienced designers and marketing professionals work closely with each client to understand their unique vision and develop tailored solutions that align with their goals.</p>
+          <p>From designing eye-catching logos and brand identities, to building custom websites that engage and convert visitors, to crafting effective influencer marketing campaigns, we are dedicated to helping our clients succeed in the digital space.</p>
+        </div>
+        <img class="icon-star-group intro-stars" src="images/ico_star_group.svg" alt="">
+        <figure class="since">
+          <img src="images/img_since.png" alt="">
+          <figcaption class="text-gradient">since 2006</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ========================== Steps 01-04 ========================== -->
+    <section class="steps">
+      <div class="wrapper">
+        <ol class="steps-grid">
+          <li class="step step-01">
+            <p class="step-number">01</p>
+            <p class="step-text">We create unique brand identities that resonate with your target audience and help you stand out in a crowded marketplace</p>
+          </li>
+          <li class="step step-02">
+            <p class="step-number">02</p>
+            <p class="step-text">We build custom websites that are visually stunning, easy to navigate, and optimized for search engines</p>
+          </li>
+          <li class="step step-03">
+            <p class="step-number">03</p>
+            <p class="step-text">We develop influencer campaigns that help you reach a wider audience, build brand awareness, and drive conversions</p>
+          </li>
+          <li class="step step-04">
+            <p class="step-number">04</p>
+            <p class="step-text">We produce high-quality content that engages your audience, builds trust, and reinforces your brand message</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ==================== Objectives + tabs ==================== -->
+    <section class="objectives" id="objectives">
+      <div class="wrapper objectives-grid">
+        <h2 class="section-title text-gradient objectives-title">Help our clients achive their business objectives</h2>
+        <p class="squiggle objectives-squiggle text-gradient" aria-hidden="true">&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;</p>
+        <p class="eyebrow text-gradient objectives-eyebrow">London 2006</p>
+        <div class="objectives-col-1">
+          <p>Influenzilla is a leading design and marketing agency that offers creative solutions to businesses of all sizes. Our team of experts specializes in creating unique and effective designs that help our clients stand out in a crowded market.</p>
+          <p>Our mission is to help our clients achieve their business objectives through innovative and effective design solutions. We believe that great design is more than just aesthetics. It&rsquo;s about creating a seamless user experience that engages and delights your audience.</p>
+        </div>
+        <div class="objectives-col-2">
+          <p>We take pride in our ability to understand the unique needs and goals of each of our clients, and to develop customized solutions that exceed their expectations. Our team of talented designers and marketers work closely with our clients to create a cohesive brand identity, effective marketing strategies, and user-friendly websites and applications.</p>
+          <p>We offer a wide range of services, including branding, web design, social media marketing, graphic design, and more. Our goal is to help our clients achieve success by providing them with the tools and resources they need to grow their business.</p>
+        </div>
+
+        <div class="tabs objectives-tabs">
+          <div class="tab-list" role="tablist" aria-label="Services">
+            <button class="tab is-active" type="button" role="tab" id="tab-branding" aria-controls="panel-branding" aria-selected="true">
+              <span class="text-gradient">Branding</span>
+            </button>
+            <button class="tab" type="button" role="tab" id="tab-design" aria-controls="panel-design" aria-selected="false" tabindex="-1">
+              <span class="text-gradient">Design</span>
+            </button>
+            <button class="tab" type="button" role="tab" id="tab-marketing" aria-controls="panel-marketing" aria-selected="false" tabindex="-1">
+              <span class="text-gradient">Marketing</span>
+            </button>
+          </div>
+
+          <div class="tab-panel" role="tabpanel" id="panel-branding" aria-labelledby="tab-branding">
+            <img class="tab-art" src="images/img_tab_01.png" alt="">
+            <p class="tab-text-1">Our team of experts specializes in creating unique and effective designs</p>
+            <p class="tab-text-2">We created marketing materials that were consistent with the new brand identity, such as business cards, brochures, and social media graphics.</p>
+          </div>
+          <div class="tab-panel is-hidden" role="tabpanel" id="panel-design" aria-labelledby="tab-design" hidden>
+            <img class="tab-art" src="images/img_tab_02.png" alt="">
+            <p class="tab-text-1">Innovative and effective design solutions for business of our clients</p>
+            <p class="tab-text-2">We partnered with a technology startup to create a new website that would showcase their innovative product and attract investors.</p>
+          </div>
+          <div class="tab-panel is-hidden" role="tabpanel" id="panel-marketing" aria-labelledby="tab-marketing" hidden>
+            <img class="tab-art" src="images/img_tab_03.png" alt="">
+            <p class="tab-text-1">Our team of experienced designers and marketing professionals work closely</p>
+            <p class="tab-text-2">We provided the brand with a detailed social media strategy that outlined how they could continue to grow their following and engage with their audience in the future.</p>
+          </div>
+        </div>
+
+        <img class="icon-star objectives-star" src="images/ico_star.svg" alt="">
+        <p class="objectives-outro">We specialize in creating unique and innovative designs that not only capture the essence of your business but also help you achieve your goals. We believe that great design is about creating a seamless user experience that engages and delights your audience, and we work hard to ensure that every design we create meets this high standard.</p>
+      </div>
+    </section>
+
+    <!-- ==================== Expertise ==================== -->
+    <section class="expertise" id="expertise">
+      <div class="expertise-bg"></div>
+      <div class="wrapper expertise-grid">
+        <p class="eyebrow text-gradient expertise-greeting-1">hi there, let&rsquo;s get started!</p>
+        <p class="eyebrow expertise-greeting-2">hi there, let&rsquo;s get started!</p>
+        <p class="eyebrow expertise-greeting-3">hi there, let&rsquo;s get started!</p>
+        <h2 class="section-title text-gradient expertise-title">Expertise and experience</h2>
+        <p class="squiggle expertise-squiggle text-gradient" aria-hidden="true">&#732;&#732;&#732;&#732;&#732;&#732;&#732;&#732;</p>
+        <p class="expertise-lede text-gradient">We believe that building long-lasting relationships with our clients is key to achieving success. We are passionate about what we do, and we are committed to delivering exceptional results for every client we work with.</p>
+        <img class="icon-star-group expertise-stars" src="images/ico_star_group.svg" alt="">
+        <div class="expertise-col-1">
+          <p>Our team of talented designers and marketers works closely with each of our clients, taking the time to understand their unique needs and goals, and developing customized solutions that exceed their expectations.</p>
+          <p>We take pride in our ability to create a cohesive brand identity, effective marketing strategies, and user-friendly websites and applications that help our clients achieve success.</p>
+        </div>
+        <div class="expertise-col-2">
+          <p>So if you&rsquo;re a start-up looking to create a strong brand identity, or an established business looking to revamp your marketing strategy, we have the expertise and experience to help you succeed.</p>
+          <p>Contact us today to learn more about our services and how we can help your business grow. We look forward to hearing from you and starting this exciting journey together.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== Projects slider ==================== -->
+    <section class="projects" id="projects">
+      <div class="wrapper">
+        <div class="projects-head">
+          <h2 class="section-title text-gradient">Projects for our clients</h2>
+          <p class="squiggle projects-squiggle text-gradient" aria-hidden="true">&#732;&#732;&#732;&#732;&#732;&#732;&#732;</p>
+        </div>
+
+        <div class="slider" data-slider>
+          <div class="slider-viewport">
+            <ul class="slider-track" data-slider-track>
+              <li class="slide">
+                <article class="project project-01">
+                  <p class="project-tag text-gradient">branding</p>
+                  <h3 class="project-title">Food store identity</h3>
+                  <p class="project-text">We worked with a local health food store to create a new brand identity that was both modern and eco-friendly.</p>
+                </article>
+                <article class="project project-02">
+                  <p class="project-tag text-gradient">web design</p>
+                  <h3 class="project-title">Technology startup site</h3>
+                  <p class="project-text">We partnered with a technology startup to create a new website that would showcase their innovative product and attract investors.</p>
+                </article>
+              </li>
+              <li class="slide">
+                <article class="project project-03">
+                  <p class="project-tag text-gradient">marketing</p>
+                  <h3 class="project-title">Fashion instagram marketing</h3>
+                  <p class="project-text">Our team helped a new fashion brand grow their Instagram following by over 200% in just three months.</p>
+                </article>
+                <article class="project project-04">
+                  <p class="project-tag text-gradient">development</p>
+                  <h3 class="project-title">Mobile and desktop services</h3>
+                  <p class="project-text">Developing modern websites that are optimized for both desktop and mobile devices.</p>
+                </article>
+              </li>
+              <li class="slide">
+                <article class="project project-05">
+                  <p class="project-tag text-gradient">branding</p>
+                  <h3 class="project-title">Eco packaging design</h3>
+                  <p class="project-text">We created marketing materials that were consistent with the new brand identity, such as business cards, brochures, and social media graphics.</p>
+                </article>
+                <article class="project project-06">
+                  <p class="project-tag text-gradient">marketing</p>
+                  <h3 class="project-title">Social media graphics</h3>
+                  <p class="project-text">We provided the brand with a detailed social media strategy that outlined how they could continue to grow their following and engage with their audience in the future.</p>
+                </article>
+              </li>
+            </ul>
+          </div>
+
+          <div class="slider-controls">
+            <button class="slider-arrow slider-prev" type="button" aria-label="Previous slide" data-slider-prev>
+              <img src="images/ico_arrow.svg" alt="">
+            </button>
+            <ul class="slider-dots" data-slider-dots></ul>
+            <button class="slider-arrow slider-next" type="button" aria-label="Next slide" data-slider-next>
+              <img src="images/ico_arrow.svg" alt="">
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
+  <!-- ==================== Footer ==================== -->
   <footer class="site-footer">
-    <!-- footer content -->
+    <div class="wrapper">
+      <div class="header-inner">
+        <a class="logo" href="#">
+          <img class="logo-mark" src="images/ico_star.svg" alt="Influenzailla">
+          <span class="logo-name">Influenzailla</span>
+          <span class="logo-tagline">bespoke design and marketing services</span>
+        </a>
+
+        <nav class="site-nav" aria-label="Footer">
+          <ul class="nav-row">
+            <li class="nav-item nav-item-about"><a href="#">ABOUT</a></li>
+            <li class="nav-item nav-item-services"><a href="#">SERVICES</a></li>
+            <li class="nav-item nav-item-cases"><a href="#">CASES</a></li>
+            <li class="nav-item nav-item-team"><a href="#">TEAM</a></li>
+            <li class="nav-item nav-item-lang">
+              <a href="#" aria-label="Language"><img src="images/ico_globe.svg" alt="Language"></a>
+            </li>
+          </ul>
+          <ul class="nav-row">
+            <li class="nav-item nav-item-boost"><a href="#">BOOST PROGRAM</a></li>
+            <li class="nav-item nav-item-products"><a href="#">PRODUCTS</a></li>
+            <li class="nav-item nav-item-book"><a href="#">BOOK</a></li>
+            <li class="nav-item nav-item-blog"><a href="#">BLOG</a></li>
+          </ul>
+        </nav>
+
+        <ul class="footer-mobile-links">
+          <li><a href="#">MENU</a></li>
+          <li><a href="#">PRIVACY POLICY</a></li>
+        </ul>
+      </div>
+    </div>
   </footer>
+
+  <!-- ==================== Mobile menu overlay ==================== -->
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <div class="wrapper">
+      <div class="mobile-menu-head">
+        <a class="logo" href="#">
+          <img class="logo-mark" src="images/ico_star.svg" alt="Influenzailla">
+          <span class="logo-name">Influenzailla</span>
+        </a>
+        <button class="menu-close" type="button">Close</button>
+      </div>
+      <ul class="mobile-menu-list">
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">SERVICES</a></li>
+        <li><a href="#">CASES</a></li>
+        <li><a href="#">TEAM</a></li>
+        <li><a href="#">BOOST PROGRAM</a></li>
+        <li><a href="#">PRODUCTS</a></li>
+        <li><a href="#">BOOK</a></li>
+        <li><a href="#">BLOG</a></li>
+        <li><a href="#" aria-label="Language"><img src="images/ico_globe.svg" alt="Language"></a></li>
+      </ul>
+    </div>
+  </div>
 <script src="js/index.js"></script>
 </body>
 </html>
