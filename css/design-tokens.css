@@ -18,6 +18,8 @@
   --color-text-primary: #ffffff;
   --color-text-muted: #e4e4e4;
   --color-border: #ffffff;
+  --color-dot-active: #e28224;
+  --color-dot-inactive: #d9d9d9;
 
   /* ---------- Brand gradient ---------- */
   --color-gradient-stop-1: #c6f1f7;
@@ -52,6 +54,12 @@
   --font-size-15: 1.5rem;
   --font-size-16: 1.6rem;
   --font-size-27: 2.7rem;
+  /* Mobile display size. Measured: cap height 24px against the
+     desktop h1's 40px at 54px, so 54 x 0.6 = 32. Every display
+     element on mobile lands on this one size. */
+  --font-size-32: 3.2rem;
+  /* Mobile squiggle. Desktop 48 scaled by the same 32/54 ratio. */
+  --font-size-28: 2.8rem;
   --font-size-30: 3rem;
   --font-size-40: 4rem;
   --font-size-48: 4.8rem;

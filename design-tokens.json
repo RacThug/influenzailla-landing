@@ -28,6 +28,11 @@
         "$extensions": { "figma.nodeId": "506:368" }
       }
     },
+    "dot": {
+      "$description": "Slider pagination. Sampled from the centre of the dots in the exports.",
+      "active": { "$value": "#e28224", "$extensions": { "sampled": "page-desktop.png @ 688,4907" } },
+      "inactive": { "$value": "#d9d9d9", "$extensions": { "sampled": "page-desktop.png @ 719,4907" } }
+    },
     "border": {
       "$value": "#ffffff",
       "$description": "Outlined boxes: logo, nav buttons, service cards."
@@ -85,6 +90,12 @@
     "15": { "$value": "15px", "$extensions": { "css.rem": "1.5rem", "usage": "Section-link band labels (Unbounded Regular)" } },
     "16": { "$value": "16px", "$extensions": { "css.rem": "1.6rem", "usage": "Logo wordmark (Unbounded SemiBold) and hero lede (Unbounded Regular)" } },
     "27": { "$value": "27px", "$extensions": { "css.rem": "2.7rem", "usage": "Year mark (Unbounded ExtraLight)" } },
+    "28": { "$value": "28px", "$description": "Mobile squiggle. Desktop 48px scaled by the 32/54 display ratio.", "$extensions": { "css.rem": "2.8rem", "usage": "Squiggle rule, mobile" } },
+    "32": {
+      "$value": "32px",
+      "$description": "The single mobile display size. Derived by measuring cap heights in page-mobile.png against the known 54px desktop heading: 24/40 = 0.6, so 54 x 0.6 = 32. Headings, step numbers, project titles and the year mark all collapse to this one size on mobile.",
+      "$extensions": { "css.rem": "3.2rem", "usage": "All display type, mobile" }
+    },
     "30": { "$value": "30px", "$extensions": { "css.rem": "3rem", "usage": "Service card titles (Unbounded Light)" } },
     "40": { "$value": "40px", "$extensions": { "css.rem": "4rem", "usage": "Step numerals 01-04 and project titles (Unbounded Light)" } },
     "48": { "$value": "48px", "$extensions": { "css.rem": "4.8rem", "usage": "Squiggle rule decoration (Unbounded Light)" } },
