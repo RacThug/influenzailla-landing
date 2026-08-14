@@ -70,6 +70,7 @@ function initSlider() {
     return;
   }
 
+  var viewport = slider.querySelector('.slider-viewport');
   var track = slider.querySelector('[data-slider-track]');
   var slides = Array.prototype.slice.call(track.querySelectorAll('.slide'));
   var dotList = slider.querySelector('[data-slider-dots]');
@@ -94,9 +95,14 @@ function initSlider() {
     dots.push(dot);
   });
 
+  function syncHeight() {
+    viewport.style.height = slides[current].getBoundingClientRect().height + 'px';
+  }
+
   function go(index) {
     current = (index + slides.length) % slides.length;
     track.style.transform = 'translateX(' + (-100 * current) + '%)';
+    syncHeight();
 
     dots.forEach(function (dot, i) {
       dot.classList.toggle('is-active', i === current);
@@ -120,6 +126,18 @@ function initSlider() {
   }
 
   go(0);
+
+  /* The first measurement runs before the card artwork has loaded, so
+     the height has to be re-taken whenever a slide actually resizes. */
+  window.addEventListener('resize', syncHeight);
+  window.addEventListener('load', syncHeight);
+
+  if (window.ResizeObserver) {
+    var observer = new ResizeObserver(syncHeight);
+    slides.forEach(function (slide) {
+      observer.observe(slide);
+    });
+  }
 }
 
 /* =========================================================
