@@ -1,0 +1,176 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Design tokens extracted from the Figma design file. The file defines no Figma Variables (get_variable_defs returned {}), so every value below was measured from the actual styles applied to the design nodes. Node ids are recorded so each value can be traced back.",
+  "color": {
+    "$type": "color",
+    "background": {
+      "$value": "#000000",
+      "$description": "Page background. The whole design sits on black."
+    },
+    "surface": {
+      "$value": "#202020",
+      "$description": "Raised panel. Measured on the 'since 2006' box.",
+      "$extensions": { "figma.nodeId": "506:385" }
+    },
+    "overlay": {
+      "$value": "rgba(0, 0, 0, 0.7)",
+      "$description": "Scrim behind the section-link band. Applied together with opacity 0.8.",
+      "$extensions": { "figma.nodeId": "506:398" }
+    },
+    "text": {
+      "primary": {
+        "$value": "#ffffff",
+        "$description": "Headings, numerals, nav labels."
+      },
+      "muted": {
+        "$value": "#e4e4e4",
+        "$description": "Body copy.",
+        "$extensions": { "figma.nodeId": "506:368" }
+      }
+    },
+    "border": {
+      "$value": "#ffffff",
+      "$description": "Outlined boxes: logo, nav buttons, service cards."
+    },
+    "gradient": {
+      "$description": "The four stops of the brand gradient, in order.",
+      "stop-1": { "$value": "#c6f1f7", "$description": "rgb(198, 241, 247) at 4.0058%" },
+      "stop-2": { "$value": "#f983e9", "$description": "rgb(249, 131, 233) at 36.142%" },
+      "stop-3": { "$value": "#b877ff", "$description": "rgb(184, 119, 255) at 77.436%" },
+      "stop-4": { "$value": "#c2e9cd", "$description": "rgb(194, 233, 205) at 106.11%" }
+    }
+  },
+  "gradient": {
+    "$type": "gradient",
+    "brand": {
+      "$value": [
+        { "color": "#c6f1f7", "position": 0.040058 },
+        { "color": "#f983e9", "position": 0.36142 },
+        { "color": "#b877ff", "position": 0.77436 },
+        { "color": "#c2e9cd", "position": 1 }
+      ],
+      "$description": "Applied as a background-clip: text fill on most headings and eyebrows. In Figma the angle varies per node between 92.06deg and 96.76deg; 95deg is the rounded representative value. The fourth stop sits at 106.11% in Figma, which CSS clamps to 100%.",
+      "$extensions": {
+        "css.angle": "95deg",
+        "figma.angleRange": "92.06deg - 96.76deg",
+        "figma.nodeIds": ["506:390", "506:403", "506:334", "506:459"]
+      }
+    }
+  },
+  "fontFamily": {
+    "$type": "fontFamily",
+    "display": {
+      "$value": ["Unbounded", "sans-serif"],
+      "$description": "Headings, numerals, logo, nav band labels."
+    },
+    "body": {
+      "$value": ["Inter", "sans-serif"],
+      "$description": "Body copy, eyebrows, nav button labels."
+    }
+  },
+  "fontWeight": {
+    "$type": "fontWeight",
+    "extralight": { "$value": 200, "$description": "Unbounded ExtraLight - the '2023' year mark." },
+    "light": { "$value": 300, "$description": "Unbounded Light - all display headings and numerals." },
+    "regular": { "$value": 400, "$description": "Unbounded Regular and Inter Regular." },
+    "medium": { "$value": 500, "$description": "Inter Medium - nav button labels." },
+    "semibold": { "$value": 600, "$description": "Unbounded SemiBold - logo wordmark and tagline." }
+  },
+  "fontSize": {
+    "$type": "dimension",
+    "$description": "Measured in px. The rem equivalents assume the project's 62.5% root, where 1rem = 10px.",
+    "10": { "$value": "10px", "$extensions": { "css.rem": "1rem", "usage": "Logo tagline (Unbounded SemiBold)" } },
+    "12": { "$value": "12px", "$extensions": { "css.rem": "1.2rem", "usage": "Eyebrow text and nav button labels (Inter)" } },
+    "14": { "$value": "14px", "$extensions": { "css.rem": "1.4rem", "usage": "Body copy (Inter)" } },
+    "15": { "$value": "15px", "$extensions": { "css.rem": "1.5rem", "usage": "Section-link band labels (Unbounded Regular)" } },
+    "16": { "$value": "16px", "$extensions": { "css.rem": "1.6rem", "usage": "Logo wordmark (Unbounded SemiBold) and hero lede (Unbounded Regular)" } },
+    "27": { "$value": "27px", "$extensions": { "css.rem": "2.7rem", "usage": "Year mark (Unbounded ExtraLight)" } },
+    "30": { "$value": "30px", "$extensions": { "css.rem": "3rem", "usage": "Service card titles (Unbounded Light)" } },
+    "40": { "$value": "40px", "$extensions": { "css.rem": "4rem", "usage": "Step numerals 01-04 and project titles (Unbounded Light)" } },
+    "48": { "$value": "48px", "$extensions": { "css.rem": "4.8rem", "usage": "Squiggle rule decoration (Unbounded Light)" } },
+    "54": { "$value": "54px", "$extensions": { "css.rem": "5.4rem", "usage": "Section headings (Unbounded Light)" } }
+  },
+  "lineHeight": {
+    "$type": "number",
+    "$description": "Unitless, as the coding guideline requires. Figma reports 'normal' on most text; the one explicit value in the file is 17px on 14px type (node 506:382), which is the basis for the body ratio.",
+    "none": { "$value": 1 },
+    "body": { "$value": 1.21, "$description": "17 / 14 = 1.2143, rounded." },
+    "display": { "$value": 1.25, "$description": "Unbounded's default 'normal' leading." }
+  },
+  "letterSpacing": {
+    "$type": "dimension",
+    "normal": { "$value": "0" },
+    "squiggle": {
+      "$value": "-0.2em",
+      "$description": "-9.6px on 48px type, expressed relative so it scales.",
+      "$extensions": { "figma.nodeIds": ["506:391", "506:379", "506:336", "506:325", "506:460"] }
+    }
+  },
+  "layout": {
+    "$type": "dimension",
+    "$description": "The desktop grid. 96 margin + 4 columns of 240 + 3 gutters of 96 = 1440.",
+    "canvas": { "$value": "1440px", "$description": "Desktop design width." },
+    "container": { "$value": "1248px", "$description": "Content width inside the page margins." },
+    "margin": { "$value": "96px", "$description": "Page side margin. Column origins are 96, 432, 768, 1104." },
+    "column": { "$value": "240px" },
+    "gutter": { "$value": "96px" },
+    "column-step": { "$value": "336px", "$description": "column + gutter." },
+    "half": { "$value": "624px", "$description": "Half the container - the 2-up card width." },
+    "mobile": { "$value": "375px", "$description": "iPhone SE, the mobile design width named in the brief." }
+  },
+  "spacing": {
+    "$type": "dimension",
+    "$description": "Recurring measured gaps only - no invented steps.",
+    "2": { "$value": "2px", "$description": "Divider thickness and border width." },
+    "16": { "$value": "16px" },
+    "29": { "$value": "29px", "$description": "Small star icon." },
+    "40": { "$value": "40px" },
+    "48": { "$value": "48px", "$description": "Header top offset." },
+    "68": { "$value": "68px", "$description": "Nav button row height." },
+    "96": { "$value": "96px", "$description": "Page margin and gutter." },
+    "134": { "$value": "134px", "$description": "Header and logo block height." },
+    "192": { "$value": "192px", "$description": "Section-link band height." }
+  },
+  "size": {
+    "$type": "dimension",
+    "$description": "Fixed component dimensions taken straight from the design.",
+    "logo-width": { "$value": "432px" },
+    "logo-height": { "$value": "134px" },
+    "nav-button-height": { "$value": "68px" },
+    "divider-width": { "$value": "240px" },
+    "divider-height": { "$value": "2px" },
+    "icon-star-sm": { "$value": "29px" },
+    "icon-star-md": { "$value": "34px" },
+    "icon-arrow": { "$value": "40px" },
+    "avatar": { "$value": "48.286px", "$description": "Circular masked portrait on the service cards." },
+    "card-tab-width": { "$value": "306px" },
+    "card-tab-height": { "$value": "143px" },
+    "card-panel-height": { "$value": "220px" },
+    "project-card-width": { "$value": "625px" },
+    "project-card-height": { "$value": "337px" },
+    "since-box-width": { "$value": "241.193px" },
+    "since-box-height": { "$value": "276px" }
+  },
+  "borderWidth": {
+    "$type": "dimension",
+    "default": { "$value": "2px", "$description": "Every outlined box in the design uses a 2px solid white border." }
+  },
+  "borderRadius": {
+    "$type": "dimension",
+    "none": { "$value": "0", "$description": "Figma names the shapes 'rounded-rectangle' but every corner radius in the file resolves to 0." }
+  },
+  "opacity": {
+    "$type": "number",
+    "inactive": { "$value": 0.3, "$description": "Unselected service card tab titles.", "$extensions": { "figma.nodeIds": ["506:352", "506:355"] } },
+    "hover": { "$value": 0.5, "$description": "From the coding guideline, not the Figma file: PC hover state for buttons and links." },
+    "scrim": { "$value": 0.8, "$description": "Layer opacity on the section-link band, on top of its 70% black fill." }
+  },
+  "duration": {
+    "$type": "duration",
+    "hover": { "$value": "0.2s", "$description": "From the coding guideline, not the Figma file." }
+  },
+  "breakpoint": {
+    "$type": "dimension",
+    "pc": { "$value": "768px", "$description": "From the coding guideline. The single breakpoint; below it the mobile layout applies." }
+  }
+}
