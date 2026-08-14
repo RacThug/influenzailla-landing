@@ -77,10 +77,12 @@ h4 {
 /* =========================================================
    4. Layout - mobile first (design base: iPhone SE 375px)
    ========================================================= */
+/* At the 375px mobile width this leaves exactly the 335px
+   container the Direction page calls for. */
 .wrapper {
   width: 100%;
   margin: 0 auto;
-  padding: 0 var(--space-16);
+  padding: 0 var(--layout-margin-mobile);
 }
 
 /* =========================================================
@@ -94,8 +96,8 @@ h4 {
    ========================================================= */
 @media (min-width: 768px) {
   /* box-sizing is border-box, so the cap is canvas width and the
-     padding carves the 96px margins out of it, leaving exactly
-     the 1248px container. */
+     padding carves the 95px margins out of it, leaving exactly
+     the 1250px container. */
   .wrapper {
     max-width: var(--layout-canvas);
     padding: 0 var(--layout-margin);

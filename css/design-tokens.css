@@ -66,15 +66,20 @@
   --letter-spacing-normal: 0;
   --letter-spacing-squiggle: -0.2em;
 
-  /* ---------- Layout ---------- */
+  /* ---------- Layout ----------
+     1250 / 335 are stated on the Direction page as the maximum
+     width for any section that does not fill the screen. They
+     are instructions, not measurements. */
   --layout-canvas: 144rem;
-  --layout-container: 124.8rem;
-  --layout-margin: 9.6rem;
+  --layout-container: 125rem;
+  --layout-margin: 9.5rem;
   --layout-column: 24rem;
   --layout-gutter: 9.6rem;
   --layout-column-step: 33.6rem;
-  --layout-half: 62.4rem;
+  --layout-half: 62.5rem;
   --layout-mobile: 37.5rem;
+  --layout-container-mobile: 33.5rem;
+  --layout-margin-mobile: 2rem;
 
   /* ---------- Spacing ---------- */
   --space-2: 0.2rem;
