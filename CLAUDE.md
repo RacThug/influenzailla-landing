@@ -330,5 +330,24 @@ and colors exactly - do not round or approximate. Design widths: Full HD desktop
 
 ## Analytics
 
-The four links listed under "Analytics" above must fire GA4 events via GTM. Keep the GTM
-container snippet in `index.html` and event wiring in `js/index.js`.
+The four links listed under "Analytics" above must fire GA4 events via GTM.
+
+**Only the GTM container goes in the page.** GA4 is a tag inside that container, not a second
+snippet in `index.html` - install both and every page view is counted twice.
+
+| | |
+| --- | --- |
+| GTM container | `GTM-KGPSJDNS`, in `index.html` (head script + `noscript` iframe) |
+| GA4 measurement ID | `G-TL7X1PXXE7`, held in the GA4 Configuration tag inside GTM |
+
+`initTracking()` in `js/index.js` pushes one event per marked link:
+
+```js
+{ event: 'link_click', link_id: 'about-us', link_text: 'About us' }
+```
+
+`link_id` is the `data-track` value; `link_text` is what the link reads. GTM picks the event up
+with a Custom Event trigger on `link_click` and passes both through as GA4 event parameters.
+
+Adding a tracked link means adding `data-track` to it and nothing else - the wiring is generic.
+Do not add a tracking call per link.
