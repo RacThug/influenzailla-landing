@@ -1410,10 +1410,15 @@ h3 {
     padding-left: 5.58%;
   }
 
+  /* align-content: start, because the panel's height is fixed and auto rows
+     would otherwise share the slack out between them and push the copy
+     down. The 22px sits in the row gap rather than on one paragraph, so
+     both columns start on the same line the way the design has them. */
   .tab-panel {
     display: grid;
     grid-template-columns: 22.55% 1fr;
-    gap: 0 5.9rem;
+    align-content: start;
+    gap: 2.2rem 5.9rem;
     margin-top: -0.2rem;
     height: var(--size-card-panel-height);
     padding: 2.7rem 5.58% 0;
@@ -1431,14 +1436,13 @@ h3 {
 
   .tab-text-1 {
     grid-column: 1;
-    margin-top: 2.2rem;
+    margin-top: 0;
     max-width: 18.2rem;
   }
 
   .tab-text-2 {
     grid-column: 2;
-    grid-row: 1 / span 2;
-    align-self: end;
+    grid-row: 2;
     margin-top: 0;
     max-width: 33.4rem;
   }
