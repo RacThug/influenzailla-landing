@@ -58,9 +58,6 @@
      desktop h1's 40px at 54px, so 54 x 0.6 = 32. Every display
      element on mobile lands on this one size. */
   --font-size-32: 3.2rem;
-  /* Mobile squiggle. Desktop 48 scaled by the same 32/54 ratio. */
-  --font-size-28: 2.8rem;
-  --font-size-30: 3rem;
   --font-size-40: 4rem;
   --font-size-48: 4.8rem;
   --font-size-54: 5.4rem;
@@ -71,7 +68,6 @@
   --line-height-display: 1.25;
 
   /* ---------- Letter spacing ---------- */
-  --letter-spacing-normal: 0;
   --letter-spacing-squiggle: -0.2em;
 
   /* ---------- Layout ----------
@@ -79,48 +75,27 @@
      width for any section that does not fill the screen. They
      are instructions, not measurements. */
   --layout-canvas: 144rem;
-  --layout-container: 125rem;
   --layout-margin: 9.5rem;
-  --layout-column: 24rem;
-  --layout-gutter: 9.6rem;
-  --layout-column-step: 33.6rem;
-  --layout-half: 62.5rem;
   --layout-mobile: 37.5rem;
-  --layout-container-mobile: 33.5rem;
   --layout-margin-mobile: 2rem;
 
   /* ---------- Spacing ---------- */
-  --space-2: 0.2rem;
-  --space-16: 1.6rem;
-  --space-29: 2.9rem;
-  --space-40: 4rem;
-  --space-48: 4.8rem;
-  --space-68: 6.8rem;
-  --space-96: 9.6rem;
-  --space-134: 13.4rem;
   --space-192: 19.2rem;
 
   /* ---------- Component sizes ---------- */
-  --size-logo-width: 43.2rem;
   --size-logo-height: 13.4rem;
   --size-nav-button-height: 6.8rem;
-  --size-divider-width: 24rem;
-  --size-divider-height: 0.2rem;
   --size-icon-star-sm: 2.9rem;
   --size-icon-star-md: 3.4rem;
   --size-icon-arrow: 4rem;
   --size-avatar: 4.8286rem;
-  --size-card-tab-width: 30.6rem;
   --size-card-tab-height: 14.3rem;
   --size-card-panel-height: 22rem;
-  --size-project-card-width: 62.5rem;
   --size-project-card-height: 33.7rem;
-  --size-since-box-width: 24.1193rem;
   --size-since-box-height: 27.6rem;
 
   /* ---------- Border ---------- */
   --border-width: 0.2rem;
-  --border-radius-none: 0;
 
   /* ---------- Opacity ---------- */
   --opacity-inactive: 0.3;

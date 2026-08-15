@@ -40,7 +40,6 @@ If work has already started on `main` by mistake, move the commits onto a branch
 
 ```
 root - index.html
-       design-tokens.json
        css - design-tokens.css
              index.css
        images
@@ -51,11 +50,16 @@ Do not add directories outside this shape. `docs/` holds the source briefs and i
 
 ## Design tokens
 
-`design-tokens.json` is the source of truth; `css/design-tokens.css` mirrors it as custom
-properties and is linked **before** `index.css`. Change the JSON first, then the CSS.
+`css/design-tokens.css` holds every token as a custom property and is linked **before**
+`index.css`. It is the only place a token is defined - there is no second copy to keep in step.
 
-The Figma file defines no Figma Variables, so every token was measured from the applied styles
-and carries the originating node id in `$extensions`.
+The Figma file defines no Figma Variables, so every value was measured off the exports rather
+than read out of the file. Where a number is not obvious, the rule that carries it in
+`index.css` says how it was arrived at; the sections below record the rest.
+
+Only tokens the page actually uses live in the file. A value that nothing references is not a
+token, it is a note - and a note that drifts out of date is worse than no note, so it belongs in
+this document instead.
 
 - Never hardcode a color, font size, or spacing value that a token already covers.
 - Font sizes map 1:1 from Figma px to rem because the root is 62.5%: 54px is `--font-size-54`
