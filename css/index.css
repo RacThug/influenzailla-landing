@@ -702,11 +702,13 @@ h3 {
   display: flex;
   flex-direction: column;
 }
-/* Marks "clients", above the heading. The negative bottom margin closes
-   the gap the 48px line box would otherwise leave under it. */
+/* Marks "our" on the heading's first line, and sits above it. This is the
+   one rule the design keeps at 48px on both breakpoints, so the width is
+   set once here. The negative bottom margin closes the gap the 48px line
+   box would otherwise leave under it. */
 .projects-squiggle {
   order: -1;
-  width: 9.9rem;
+  width: 10.3rem;
   margin-top: 1.8rem;
   margin-bottom: -2.8rem;
 }
@@ -1564,9 +1566,8 @@ h3 {
 
   .projects-squiggle {
     position: absolute;
-    top: -1rem;
+    top: -0.4rem;
     left: 77.17%;
-    width: 9.9rem;
     margin-top: 0;
     margin-bottom: 0;
   }

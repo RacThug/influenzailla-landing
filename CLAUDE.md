@@ -255,10 +255,10 @@ generic divider, so its length is never arbitrary.
 | Intro | "reality" | 237px | 113px |
 | Objectives | "objectives" | 195px | 186px |
 | Expertise | "and" on PC, "experience" on mobile | 113px | 195px |
-| Projects | "clients" | 99px | 99px |
+| Projects | "our" | 103px | 103px |
 
 PC draws all five at 48px. Mobile draws four of them at 32px and leaves only the projects rule
-at 48px. Because the size differs, the same width needs a different number of waves per
+at 48px - which is why that one is the same width on both breakpoints and is set once. Because the size differs, the same width needs a different number of waves per
 breakpoint, and one shared `<p>` cannot carry two counts. So each rule holds 24 waves - more
 than any breakpoint needs - and `.squiggle` sets `overflow: hidden` with an explicit width per
 rule per breakpoint. The width also bounds the `background-clip: text` gradient, which is what
