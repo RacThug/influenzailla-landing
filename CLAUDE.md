@@ -288,6 +288,12 @@ marking the current slide.
 Slides 2 and 3 exist only on the Direction page. Building from the desktop page alone would
 ship a slider with a single slide.
 
+The design hides the prev/next buttons below 768px, so on a phone the dots would be the only
+way through. The slider therefore takes a swipe as well: the drag is followed in pixels, a
+fifth of the viewport commits to the next slide and anything less snaps back, and a finger
+heading down the page is left alone so the page still scrolls. Written by hand rather than
+pulled from Slick - it is forty lines and carries no dependency.
+
 ### Mobile navigation
 
 The header collapses to logo + `MENU`. Opening it replaces the header with a full-width
