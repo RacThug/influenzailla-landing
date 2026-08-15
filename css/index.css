@@ -107,33 +107,86 @@ h3 {
   font-size: var(--font-size-32);
 }
 
-/* The wave rule is type, not an asset: repeated U+02DC in
-   Unbounded, tracked tight. Same technique as the design.
+/* The wave rule is type, not an asset: repeated U+02DC in Unbounded,
+   tracked tight - the same technique as the design.
 
-   Each rule is as long as the word it marks, and PC and mobile mark
-   the same words at different sizes, so the wave count differs per
-   breakpoint. One shared markup cannot carry two counts, so every
-   rule holds more waves than any breakpoint needs and the width below
-   trims it. The width also bounds the gradient, which is what keeps
-   each rule reading like the word above it. */
-.squiggle {
+   Each rule belongs to one word, so it is drawn from that word rather than
+   placed on the grid. The headings re-wrap anywhere between 768 and 1440,
+   and a rule positioned by percentage slides off its word as soon as they
+   do. PC and mobile mark different words in three of the five sections, so
+   both words carry a span and only one is lit per breakpoint.
+
+   The rule holds more waves than any breakpoint needs and the width below
+   trims it; that width also bounds the gradient, which is what makes the
+   rule read as belonging to the word above or below it. */
+.mark {
+  position: relative;
+}
+
+.mark::before {
+  display: none;
   overflow: hidden;
+  position: absolute;
+  left: 0;
+  background: var(--gradient-brand);
+  background-clip: text;
+  -webkit-background-clip: text;
   font-family: var(--font-display);
   font-weight: var(--font-weight-light);
-  font-size: var(--font-size-48);
+  font-size: var(--font-size-32);
   line-height: var(--line-height-none);
   letter-spacing: var(--letter-spacing-squiggle);
   white-space: nowrap;
+  color: transparent;
+  content: "˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜";
+  /* Declared twice on purpose: the second gives the rule empty alternative
+     text so a screen reader skips it, and browsers that do not know the
+     syntax keep the first. */
+  content: "˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜" / "";
   pointer-events: none;
 }
 
-/* Mobile draws four of the five at 32px; only the projects rule stays
-   at the PC size. */
-.squiggle-hero,
-.intro-squiggle,
-.objectives-squiggle,
-.expertise-squiggle {
-  font-size: var(--font-size-32);
+/* Mobile marks these five words. */
+.mark-hero::before,
+.mark-intro-sp::before,
+.mark-objectives-sp::before,
+.mark-expertise-sp::before,
+.mark-projects-sp::before {
+  display: block;
+}
+
+/* The negative margins drop each rule back over the word: the line box is
+   as tall as the type, so bottom: 100% alone parks it a full box clear. */
+.mark-hero::before {
+  bottom: 100%;
+  width: 8.6rem;
+  margin-bottom: -2.7rem;
+}
+
+.mark-intro-sp::before {
+  top: 100%;
+  width: 11.3rem;
+  margin-top: 0.1rem;
+}
+
+.mark-objectives-sp::before {
+  top: 100%;
+  width: 18.6rem;
+  margin-top: 0.3rem;
+}
+
+.mark-expertise-sp::before {
+  top: 100%;
+  width: 19.5rem;
+  margin-top: 0.8rem;
+}
+
+/* The one rule the design keeps at the PC size on mobile too. */
+.mark-projects-sp::before {
+  bottom: 100%;
+  width: 10.3rem;
+  margin-bottom: -2.8rem;
+  font-size: var(--font-size-48);
 }
 
 .icon-star {
@@ -277,16 +330,10 @@ h3 {
   line-height: 1.33;
 }
 
-/* Marks "your", the last word of the first heading line. */
-.squiggle-hero {
-  width: 8.6rem;
-  margin-top: 6.4rem;
-  margin-left: 17.4rem;
-}
-
 /* -27px, not -22px: the mobile rule above is 32px tall, not 48px. */
+/* 69px is what the rule's line box and margins used to hold open here. */
 .hero-title {
-  margin-top: -2.7rem;
+  margin-top: 6.9rem;
   font-size: var(--font-size-32);
 }
 
@@ -374,16 +421,9 @@ h3 {
   margin-top: 2.4rem;
 }
 
-/* Marks "reality", and sits under it rather than across it. */
-.intro-squiggle {
-  width: 11.3rem;
-  margin-top: 0.6rem;
-  margin-left: 8.1rem;
-}
-
 /* 42px, not 60px: the mobile rule above is 32px tall, not 48px. */
 .intro-body {
-  margin-top: 4.2rem;
+  margin-top: 8rem;
 }
 /* Mobile opens the section with the stars; PC places them in the grid at
    the foot of the last column instead. */
@@ -493,12 +533,6 @@ h3 {
   padding-top: 8rem;
 }
 
-/* Marks "objectives", the last heading line, and sits clear below it. */
-.objectives-squiggle {
-  width: 18.6rem;
-  margin-top: 0.3rem;
-}
-
 /* Mobile runs a different order from desktop: the closing
    paragraph sits above the tabs, and the two-column body below
    them. Matches page-mobile.png. */
@@ -508,10 +542,6 @@ h3 {
 
 .objectives-title {
   order: 2;
-}
-
-.objectives-squiggle {
-  order: 3;
 }
 
 .objectives-outro {
@@ -545,7 +575,7 @@ h3 {
 }
 
 .objectives-outro {
-  margin-top: 2.4rem;
+  margin-top: 5.9rem;
   max-width: 32.3rem;
 }
 
@@ -660,16 +690,9 @@ h3 {
   margin-top: 7rem;
 }
 
-/* Marks "experience", the last heading line. */
-.expertise-squiggle {
-  grid-column: 1 / -1;
-  width: 19.5rem;
-  margin-top: 0.7rem;
-}
-
 .expertise-lede {
   grid-column: 1 / -1;
-  margin-top: 3rem;
+  margin-top: 6.9rem;
   max-width: 25rem;
 }
 
@@ -702,18 +725,11 @@ h3 {
   display: flex;
   flex-direction: column;
 }
-/* Marks "our" on the heading's first line, and sits above it. This is the
-   one rule the design keeps at 48px on both breakpoints, so the width is
-   set once here. The negative bottom margin closes the gap the 48px line
-   box would otherwise leave under it. */
-.projects-squiggle {
-  order: -1;
-  width: 10.3rem;
-  margin-top: 1.8rem;
-  margin-bottom: -2.8rem;
-}
-
+/* 38px is what the rule's line box and margins used to hold open above the
+   heading. It goes on the heading, not the head: the padding shorthand
+   below is shared with the controls and would overwrite it there. */
 .projects-head .section-title {
+  margin-top: 3.8rem;
   max-width: 25rem;
 }
 /* 30px puts the first card on y=4515, where the mobile design has it. */
@@ -945,6 +961,54 @@ h3 {
    property inside a media query. It mirrors --breakpoint-pc.
    ========================================================= */
 @media (min-width: 768px) {
+  /* PC marks a different word from mobile in three of the five sections. */
+  .mark-intro-sp::before,
+  .mark-objectives-sp::before,
+  .mark-expertise-sp::before,
+  .mark-projects-sp::before {
+    display: none;
+  }
+
+  .mark-intro-pc::before,
+  .mark-objectives-pc::before,
+  .mark-expertise-pc::before,
+  .mark-projects-pc::before {
+    display: block;
+  }
+
+  .mark::before {
+    font-size: var(--font-size-48);
+  }
+
+  .mark-hero::before {
+    width: 14rem;
+    margin-bottom: -3.7rem;
+  }
+
+  .mark-intro-pc::before {
+    top: 100%;
+    width: 23.7rem;
+    margin-top: 0.6rem;
+  }
+
+  .mark-objectives-pc::before {
+    bottom: 100%;
+    width: 19.5rem;
+    margin-bottom: -3.9rem;
+  }
+
+  .mark-expertise-pc::before {
+    bottom: 100%;
+    width: 11.3rem;
+    margin-bottom: -4.1rem;
+  }
+
+  .mark-projects-pc::before {
+    bottom: 100%;
+    width: 10.3rem;
+    margin-bottom: -4.4rem;
+  }
+
   /* box-sizing is border-box, so the cap is canvas width and the
      padding carves the 95px margins out of it, leaving exactly
      the 1250px container. */
@@ -1121,23 +1185,6 @@ h3 {
     width: 5.7%;
   }
 
-  /* PC marks the same words but at 48px, so each rule shows more waves
-     than it does on mobile and the widths below are the PC ones. */
-  .squiggle-hero,
-  .intro-squiggle,
-  .objectives-squiggle,
-  .expertise-squiggle {
-    font-size: var(--font-size-48);
-  }
-
-  .squiggle-hero {
-    top: 48.7rem;
-    left: 27.15%;
-    width: 14rem;
-    margin-top: 0;
-    margin-left: 0;
-  }
-
   .hero-title {
     top: 50.4rem;
     left: 6.6%;
@@ -1222,14 +1269,6 @@ h3 {
     grid-row: 3;
     margin-top: 3.1rem;
     width: 77.72%;
-  }
-
-  .intro-squiggle {
-    grid-column: 1;
-    grid-row: 4;
-    width: 23.7rem;
-    margin-top: 0;
-    margin-left: 0;
   }
 
   .intro-body {
@@ -1338,14 +1377,6 @@ h3 {
   }
 
   /* Design x=591; column 2 starts at 432, hence the 15.9rem nudge. */
-  .objectives-squiggle {
-    grid-column: 2 / span 2;
-    grid-row: 1;
-    width: 19.5rem;
-    margin-top: 0;
-    margin-left: 27.56%;
-  }
-
   .objectives-eyebrow {
     grid-column: 1;
     grid-row: 2;
@@ -1503,16 +1534,6 @@ h3 {
     width: 77.61%;
   }
 
-  /* Sits directly above "and" on the heading's first line. */
-  .expertise-squiggle {
-    grid-column: 2;
-    grid-row: 2;
-    align-self: start;
-    width: 11.3rem;
-    margin-top: 30.1rem;
-    margin-left: -2.1rem;
-  }
-
   .expertise-lede {
     grid-column: 3 / span 2;
     grid-row: 2;
@@ -1565,16 +1586,14 @@ h3 {
     width: 39.6%;
   }
 
+  /* The mobile heading carries the space the rule used to hold; PC places
+     its rule on a word instead, so the heading starts at the top. */
   .projects-head .section-title {
-    max-width: none;
+    margin-top: 0;
   }
 
-  .projects-squiggle {
-    position: absolute;
-    top: -0.4rem;
-    left: 77.17%;
-    margin-top: 0;
-    margin-bottom: 0;
+  .projects-head .section-title {
+    max-width: none;
   }
 
   .slider {
