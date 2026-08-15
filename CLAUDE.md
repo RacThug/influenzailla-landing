@@ -200,6 +200,28 @@ Desktop was checked against the same fitting method and is correct throughout: c
 `img_project_01` (0.99), card 2 to `img_project_02` (0.64), step 3 to `img_step_03` (0.80), all
 upright.
 
+### Squiggles mark one word each
+
+Every wave rule is exactly as wide as the word it marks and sits tight against it. It is not a
+generic divider, so its length is never arbitrary.
+
+| Rule | Marks | PC width | Mobile width |
+| --- | --- | --- | --- |
+| Hero | "your" | 140px | 86px |
+| Intro | "reality" | 237px | 113px |
+| Objectives | "objectives" | 195px | 186px |
+| Expertise | "and" on PC, "experience" on mobile | 113px | 195px |
+| Projects | "clients" | 99px | 99px |
+
+PC draws all five at 48px. Mobile draws four of them at 32px and leaves only the projects rule
+at 48px. Because the size differs, the same width needs a different number of waves per
+breakpoint, and one shared `<p>` cannot carry two counts. So each rule holds 24 waves - more
+than any breakpoint needs - and `.squiggle` sets `overflow: hidden` with an explicit width per
+rule per breakpoint. The width also bounds the `background-clip: text` gradient, which is what
+makes each rule read as belonging to the word above it.
+
+Changing a rule's width means re-measuring the word, not guessing a wave count.
+
 ### Tabbing section - Branding / Design / Marketing
 
 Three tabs sharing one panel. The active tab title carries the full brand gradient; the other
