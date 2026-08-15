@@ -1275,7 +1275,11 @@ h3 {
     margin-top: 15.8rem;
   }
 
+  /* max-width back: the mobile rule drops it so the cards can run edge to
+     edge, and without this the section keeps growing past 1440 on a wide
+     screen while every other section stays capped. */
   .steps .wrapper {
+    max-width: var(--layout-canvas);
     padding: 0 var(--layout-margin);
   }
 
@@ -1546,6 +1550,7 @@ h3 {
   }
 
   .projects .wrapper {
+    max-width: var(--layout-canvas);
     padding: 0 var(--layout-margin);
   }
 
