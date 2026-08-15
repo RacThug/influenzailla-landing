@@ -103,8 +103,16 @@ h3 {
 }
 
 /* The wave rule is type, not an asset: repeated U+02DC in
-   Unbounded, tracked tight. Same technique as the design. */
+   Unbounded, tracked tight. Same technique as the design.
+
+   Each rule is as long as the word it marks, and PC and mobile mark
+   the same words at different sizes, so the wave count differs per
+   breakpoint. One shared markup cannot carry two counts, so every
+   rule holds more waves than any breakpoint needs and the width below
+   trims it. The width also bounds the gradient, which is what keeps
+   each rule reading like the word above it. */
 .squiggle {
+  overflow: hidden;
   font-family: var(--font-display);
   font-weight: var(--font-weight-light);
   font-size: var(--font-size-48);
@@ -112,6 +120,15 @@ h3 {
   letter-spacing: var(--letter-spacing-squiggle);
   white-space: nowrap;
   pointer-events: none;
+}
+
+/* Mobile draws four of the five at 32px; only the projects rule stays
+   at the PC size. */
+.squiggle-hero,
+.intro-squiggle,
+.objectives-squiggle,
+.expertise-squiggle {
+  font-size: var(--font-size-32);
 }
 
 .icon-star {
@@ -240,14 +257,16 @@ h3 {
   font-size: var(--font-size-12);
 }
 
+/* Marks "your", the last word of the first heading line. */
 .squiggle-hero {
-  margin-top: 4.4rem;
-  padding-right: 9.3rem;
-  text-align: right;
+  width: 8.6rem;
+  margin-top: 6.9rem;
+  margin-left: 17.4rem;
 }
 
+/* -31px, not -22px: the mobile rule above is 32px tall, not 48px. */
 .hero-title {
-  margin-top: -2.2rem;
+  margin-top: -3.1rem;
   font-size: var(--font-size-32);
 }
 
@@ -311,9 +330,11 @@ h3 {
 
 /* =========================================================
    9. Intro - Figma frame "3d"
-   ========================================================= */
+   ========================================================= *//* 112px puts the eyebrow on y=1101, where the mobile design has it. The
+   slack this takes comes straight back off .steps below, so everything
+   from the cards down keeps its place. */
 .intro {
-  padding-top: 6rem;
+  padding-top: 11.2rem;
 }
 
 .intro-lede p + p,
@@ -333,12 +354,16 @@ h3 {
   margin-top: 2.4rem;
 }
 
+/* Marks "reality", and sits under it rather than across it. */
 .intro-squiggle {
-  margin-top: -2.8rem;
+  width: 11.3rem;
+  margin-top: 0.6rem;
+  margin-left: 8.1rem;
 }
 
+/* 42px, not 60px: the mobile rule above is 32px tall, not 48px. */
 .intro-body {
-  margin-top: 6rem;
+  margin-top: 4.2rem;
 }
 
 .intro-stars {
@@ -352,9 +377,9 @@ h3 {
 /* =========================================================
    10. Steps 01-04
    ========================================================= */
-/* 67px puts the first card at y=1590, where the mobile design has it. */
+/* 15px puts the first card at y=1590, where the mobile design has it. */
 .steps {
-  margin-top: 6.7rem;
+  margin-top: 1.5rem;
 }
 
 /* Full-bleed on mobile: the cards run edge to edge. */
@@ -446,10 +471,10 @@ h3 {
   padding-top: 8rem;
 }
 
-/* The design drops the squiggle onto its own line, clear of the heading -
-   -28px pulled it up far enough to strike through "objectives". */
+/* Marks "objectives", the last heading line, and sits clear below it. */
 .objectives-squiggle {
-  margin-top: -0.1rem;
+  width: 18.6rem;
+  margin-top: 0.3rem;
 }
 
 /* Mobile runs a different order from desktop: the closing
@@ -498,7 +523,7 @@ h3 {
 }
 
 .objectives-outro {
-  margin-top: 1.2rem;
+  margin-top: 2.4rem;
   max-width: 32.3rem;
 }
 
@@ -613,9 +638,11 @@ h3 {
   margin-top: 7rem;
 }
 
+/* Marks "experience", the last heading line. */
 .expertise-squiggle {
   grid-column: 1 / -1;
-  margin-top: -0.8rem;
+  width: 19.5rem;
+  margin-top: 0.7rem;
 }
 
 .expertise-lede {
@@ -653,11 +680,13 @@ h3 {
   display: flex;
   flex-direction: column;
 }
-
+/* Marks "clients", above the heading. The negative bottom margin closes
+   the gap the 48px line box would otherwise leave under it. */
 .projects-squiggle {
   order: -1;
-  margin-top: 0;
-  margin-bottom: 0.4rem;
+  width: 9.9rem;
+  margin-top: 1.8rem;
+  margin-bottom: -2.8rem;
 }
 
 .projects-head .section-title {
@@ -766,7 +795,8 @@ h3 {
    14. Footer
    ========================================================= */
 .site-footer {
-  padding-bottom: 5rem;
+  margin-top: 2rem;
+  padding-bottom: 3.1rem;
 }
 
 .site-footer .header-inner {
@@ -1030,11 +1060,21 @@ h3 {
     width: 5.7%;
   }
 
+  /* PC marks the same words but at 48px, so each rule shows more waves
+     than it does on mobile and the widths below are the PC ones. */
+  .squiggle-hero,
+  .intro-squiggle,
+  .objectives-squiggle,
+  .expertise-squiggle {
+    font-size: var(--font-size-48);
+  }
+
   .squiggle-hero {
     top: 48.7rem;
     left: 27.15%;
+    width: 14rem;
     margin-top: 0;
-    padding-right: 0;
+    margin-left: 0;
   }
 
   .hero-title {
@@ -1126,7 +1166,9 @@ h3 {
   .intro-squiggle {
     grid-column: 1;
     grid-row: 4;
+    width: 23.7rem;
     margin-top: 0;
+    margin-left: 0;
   }
 
   .intro-body {
@@ -1234,6 +1276,7 @@ h3 {
   .objectives-squiggle {
     grid-column: 2 / span 2;
     grid-row: 1;
+    width: 19.5rem;
     margin-top: 0;
     margin-left: 27.56%;
   }
@@ -1385,11 +1428,14 @@ h3 {
     width: 77.61%;
   }
 
+  /* Sits directly above "and" on the heading's first line. */
   .expertise-squiggle {
     grid-column: 2;
     grid-row: 2;
     align-self: start;
-    margin-top: 26.5rem;
+    width: 11.3rem;
+    margin-top: 31.6rem;
+    margin-left: -2.1rem;
   }
 
   .expertise-lede {
@@ -1451,7 +1497,9 @@ h3 {
     position: absolute;
     top: -1rem;
     left: 77.17%;
+    width: 9.9rem;
     margin-top: 0;
+    margin-bottom: 0;
   }
 
   .slider {
