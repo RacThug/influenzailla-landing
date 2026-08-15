@@ -1614,9 +1614,20 @@ h3 {
     background-size: cover;
   }
 
+  /* All six titles run two lines in the design, and one box width has to break
+     each of them where the design breaks it. 28.8rem was read off slide 1,
+     where anything from 25.3rem up gives two lines - so it fit there and hid
+     the constraint. Slides 2 and 3 dropped to three lines, and the extra line
+     pushed the copy past the card's fixed height, where the viewport's
+     overflow clipped it.
+
+     Measured in the browser, the six titles leave one window: "Fashion
+     instagram" needs 43.4rem, and "Food store identity" is 44rem exactly, so
+     44rem would pull slide 1 up onto a single line. 43.7rem is the midpoint,
+     3px clear of both edges. */
   .project-title {
     margin-top: 5.3rem;
-    max-width: 28.8rem;
+    max-width: 43.7rem;
     font-size: var(--font-size-40);
   }
 
