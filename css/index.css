@@ -165,16 +165,20 @@ h3 {
   border: var(--border-width) solid var(--color-border);
 }
 
+/* 12px of vertical padding, not 15: the mark is 32px and the row is 58.
+   The side padding is a percentage of the bar so it gives way below 375,
+   where the design's spacing no longer fits the screen. 9.67% of the
+   331px bar is the 32px the design has. */
 .logo {
   display: flex;
   align-items: center;
   gap: 1.2rem;
-  padding: 1.5rem 2rem;
+  padding: 1.2rem 9.67%;
 }
 
 .logo-mark {
-  width: 2.6rem;
-  height: 2.6rem;
+  width: 3.2rem;
+  height: 3.2rem;
 }
 
 .logo-name {
@@ -187,12 +191,12 @@ h3 {
 .logo-tagline {
   display: none;
 }
-
+/* 11.48% of the 331px bar is the 38px that puts the divider on x=239. */
 .menu-toggle {
   align-self: stretch;
-  padding: 0 3rem;
+  padding: 0 11.48%;
   border-left: var(--border-width) solid var(--color-border);
-  font-size: var(--font-size-14);
+  font-size: var(--font-size-12);
   color: var(--color-text-primary);
 }
 
@@ -710,9 +714,9 @@ h3 {
 .projects-head .section-title {
   max-width: 25rem;
 }
-
+/* 30px puts the first card on y=4515, where the mobile design has it. */
 .slider {
-  margin-top: 1.8rem;
+  margin-top: 3rem;
 }
 
 .slider-viewport {
@@ -767,8 +771,14 @@ h3 {
 .project-04 { background-image: url("../images/img_project_04.jpg"); }
 .project-05 { background-image: url("../images/img_project_05.jpg"); }
 .project-06 { background-image: url("../images/img_project_06.jpg"); }
-
+/* The gradient is painted across the box and clipped to the glyphs, so a
+   box stretched to the card width showed the tag only the pale opening of
+   the ramp and it read as plain white. 90px is the box the design's colours
+   resolve to - measured off both tags, not chosen. min-width, so a longer
+   tag on another slide still gets a box it fits in. */
 .project-tag {
+  align-self: flex-start;
+  min-width: 9rem;
   font-size: var(--font-size-12);
 }
 
@@ -787,7 +797,7 @@ h3 {
   align-items: center;
   justify-content: center;
   gap: 1.6rem;
-  margin-top: 3rem;
+  margin-top: 1.8rem;
 }
 
 .slider-arrow {
@@ -828,6 +838,31 @@ h3 {
   border-bottom: var(--border-width) solid var(--color-border);
 }
 
+/* The header drops the tagline on mobile; the footer keeps it, set beside
+   the wordmark rather than under it. 120px is what breaks it after "and",
+   and the design sets the two lines almost touching - 7px apart on 10px
+   type, not the 1.25 the rest of the page uses. */
+.site-footer .logo-tagline {
+  display: block;
+  width: 7.6rem;
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-semibold);
+  font-size: 0.6rem;
+  line-height: 1.17;
+}
+
+/* The footer fills its type with the brand gradient instead of white, on
+   both breakpoints. */
+.site-footer .logo-name,
+.site-footer .logo-tagline,
+.site-footer .nav-item a,
+.footer-mobile-links a {
+  background: var(--gradient-brand);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
 .footer-mobile-links {
   display: flex;
   flex: 1 1 100%;
@@ -838,15 +873,19 @@ h3 {
   text-align: center;
 }
 
+/* The design puts the divider a third of the way across, not halfway. */
+.footer-mobile-links li:first-child {
+  flex: 0 0 32.7%;
+}
+
 .footer-mobile-links li + li {
   border-left: var(--border-width) solid var(--color-border);
 }
 
 .footer-mobile-links a {
   display: block;
-  padding: 1.8rem 0;
+  padding: 2.1rem 0;
   font-size: var(--font-size-12);
-  color: var(--color-text-primary);
 }
 
 /* =========================================================
@@ -1585,17 +1624,6 @@ h3 {
 
   .site-footer .header-inner {
     flex-wrap: nowrap;
-  }
-
-  /* The footer repeats the header's markup but the design fills its
-     type with the brand gradient instead of white. */
-  .site-footer .logo-name,
-  .site-footer .logo-tagline,
-  .site-footer .nav-item a {
-    background: var(--gradient-brand);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
   }
 
   .site-footer .logo {
