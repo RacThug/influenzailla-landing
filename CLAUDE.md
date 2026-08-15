@@ -209,6 +209,27 @@ Desktop was checked against the same fitting method and is correct throughout: c
 `img_project_01` (0.99), card 2 to `img_project_02` (0.64), step 3 to `img_step_03` (0.80), all
 upright.
 
+### Two stars, and where each belongs
+
+`ico_star.svg` is the **outline** star and is decoration only - the hero aside, the objectives
+mark, and `ico_star_group.svg` in the intro. The logo carries a different shape: a **filled**
+nine-point star with long points, 32px in the bar on mobile.
+
+- `logo_star.svg` - white fill. Header and mobile menu.
+- `logo_star_02.svg` - the brand gradient baked into the path. Footer only, on both
+  breakpoints, because the footer fills its mark the same way it fills its type. An `<img>`
+  cannot take a CSS gradient, so the fill lives in the file.
+
+Both are the same path at the same size; only the fill differs. Editing one means editing both.
+
+### Gradient text needs a box the size of its words
+
+The brand gradient is painted across the element box and clipped to the glyphs, so a short word
+in a full-width box shows only the pale opening of the ramp and reads as plain white. Anything
+short that carries `.text-gradient` needs its box brought in: `.hero-year` uses `display: table`,
+`.project-tag` uses `align-self` with a measured `min-width`, and every squiggle has an explicit
+width. Check any new gradient text against the export before assuming it is right.
+
 ### Mobile reorders two sections
 
 Mobile does not just restack the desktop columns; two sections put their pieces in a different
