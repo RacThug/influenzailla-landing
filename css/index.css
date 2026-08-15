@@ -238,15 +238,24 @@ h3 {
   margin: 0 auto;
   padding: 0 var(--layout-margin-mobile);
 }
-
+/* The design lines the top of "2023" up with the top of the greeting
+   beside it. The nudge has to be padding: a top margin here collapses
+   through .hero-body and carries the absolutely-placed greeting down with
+   it, which leaves the two exactly as misaligned as before. */
+/* display: table so the box hugs "2023". The brand gradient is painted
+   across the box and clipped to the glyphs, so a full-width box would show
+   the numerals only the middle of the ramp - they came out pink where the
+   design has them starting pale. */
 .hero-year {
+  display: table;
   margin-top: 7rem;
-  padding-right: 7.5rem;
+  margin-right: 7.5rem;
+  margin-left: auto;
+  padding-top: 0.7rem;
   font-family: var(--font-display);
   font-weight: var(--font-weight-extralight);
   font-size: var(--font-size-32);
   line-height: var(--line-height-none);
-  text-align: right;
 }
 
 .hero-greeting {
@@ -255,18 +264,19 @@ h3 {
   right: 0.5rem;
   width: 8.2rem;
   font-size: var(--font-size-12);
+  line-height: 1.33;
 }
 
 /* Marks "your", the last word of the first heading line. */
 .squiggle-hero {
   width: 8.6rem;
-  margin-top: 6.9rem;
+  margin-top: 6.4rem;
   margin-left: 17.4rem;
 }
 
-/* -31px, not -22px: the mobile rule above is 32px tall, not 48px. */
+/* -27px, not -22px: the mobile rule above is 32px tall, not 48px. */
 .hero-title {
-  margin-top: -3.1rem;
+  margin-top: -2.7rem;
   font-size: var(--font-size-32);
 }
 
@@ -297,7 +307,7 @@ h3 {
 .section-links {
   position: relative;
   z-index: 1;
-  margin-top: 8rem;
+  margin-top: 7.4rem;
   padding: 3rem 0;
 }
 
@@ -1045,10 +1055,11 @@ h3 {
   }
 
   .hero-year {
+    display: block;
     top: 40.5rem;
     left: 6.6%;
-    margin-top: 0;
-    padding-right: 0;
+    margin: 0;
+    padding: 0;
     font-size: var(--font-size-27);
     text-align: left;
   }
