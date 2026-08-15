@@ -127,6 +127,86 @@ function initSlider() {
 
   go(0);
 
+  /* Swipe. The design hides the arrows below 768px, which leaves the dots
+     as the only way through the slides - so on a phone the slider has to
+     answer to the finger as well.
+
+     The drag is followed in pixels rather than the percentage go() rests
+     on, because the offset has to track the finger exactly. The direction
+     is settled once, on the first few pixels of movement: a finger heading
+     down the page keeps scrolling it and the slider lets go. */
+  var startX = 0;
+  var startY = 0;
+  var deltaX = 0;
+  var tracking = false;
+  var swiping = false;
+
+  viewport.addEventListener('touchstart', function (event) {
+    if (event.touches.length !== 1) {
+      return;
+    }
+
+    startX = event.touches[0].clientX;
+    startY = event.touches[0].clientY;
+    deltaX = 0;
+    tracking = true;
+    swiping = false;
+  }, { passive: true });
+
+  viewport.addEventListener('touchmove', function (event) {
+    if (!tracking) {
+      return;
+    }
+
+    var dx = event.touches[0].clientX - startX;
+    var dy = event.touches[0].clientY - startY;
+
+    if (!swiping) {
+      if (Math.abs(dy) > Math.abs(dx)) {
+        tracking = false;
+        return;
+      }
+
+      if (Math.abs(dx) < 8) {
+        return;
+      }
+
+      swiping = true;
+      track.style.transition = 'none';
+    }
+
+    /* Now that this is a swipe, the page must not scroll sideways with it. */
+    event.preventDefault();
+    deltaX = dx;
+    track.style.transform =
+      'translateX(' + (dx - current * viewport.clientWidth) + 'px)';
+  }, { passive: false });
+
+  function endSwipe() {
+    if (!tracking) {
+      return;
+    }
+
+    tracking = false;
+    track.style.transition = '';
+
+    if (!swiping) {
+      return;
+    }
+
+    swiping = false;
+
+    /* A fifth of the way across counts as a swipe; anything less snaps back. */
+    if (Math.abs(deltaX) > viewport.clientWidth / 5) {
+      go(deltaX < 0 ? current + 1 : current - 1);
+    } else {
+      go(current);
+    }
+  }
+
+  viewport.addEventListener('touchend', endSwipe);
+  viewport.addEventListener('touchcancel', endSwipe);
+
   /* The first measurement runs before the card artwork has loaded, so
      the height has to be re-taken whenever a slide actually resizes. */
   window.addEventListener('resize', syncHeight);
