@@ -186,14 +186,31 @@ h3 {
 }
 
 .hero-bg {
+  overflow: hidden;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 63rem;
+}
+
+/* Mobile reuses the desktop artwork, mirrored across the anti-diagonal -
+   a quarter turn plus a horizontal flip - scaled to 56.25%, so the
+   1440x912 source is drawn as 513x810 pinned to the top left. Verified
+   against the Figma export: the two agree to within JPEG noise.
+   A background image cannot be rotated, so the artwork goes on a
+   pseudo-element and .hero-bg clips it. */
+.hero-bg::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 216vw;
+  height: 136.8vw;
   background-image: url("../images/bg_hero.jpg");
-  background-position: center top;
-  background-size: cover;
+  background-size: 100% 100%;
+  transform-origin: 0 0;
+  transform: translate(136.8vw, 216vw) scale(-1, 1) rotate(-90deg);
+  content: "";
 }
 
 .hero-body {
@@ -335,8 +352,9 @@ h3 {
 /* =========================================================
    10. Steps 01-04
    ========================================================= */
+/* 67px puts the first card at y=1590, where the mobile design has it. */
 .steps {
-  margin-top: 5rem;
+  margin-top: 6.7rem;
 }
 
 /* Full-bleed on mobile: the cards run edge to edge. */
@@ -344,16 +362,66 @@ h3 {
   padding: 0;
 }
 
+/* Every card is 180px tall in the design, whatever its line count, with
+   the numeral at the top and the copy at the bottom - so the gap between
+   them takes up the slack rather than the card growing. */
 .step {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 18rem;
   padding: 3rem var(--layout-margin-mobile) 3.5rem;
   background-position: center;
   background-size: cover;
 }
 
-.step-01 { background-image: url("../images/img_step_01.jpg"); }
-.step-02 { background-image: url("../images/img_step_02.jpg"); }
-.step-03 { background-image: url("../images/img_step_03.jpg"); }
-.step-04 { background-image: url("../images/img_step_04.jpg"); }
+/* Each card crops its artwork differently; the numbers come off the mobile
+   export, divided by its 375px width. They are in vw because these cards
+   are full-bleed, so the crop keeps its proportions at every phone width
+   instead of leaving a gap once the screen grows past 375. */
+.step-01 {
+  background-image: url("../images/img_step_01.jpg");
+  background-position: -4vw top;
+  background-size: 103.76vw auto;
+}
+
+.step-02 {
+  background-image: url("../images/img_step_02.jpg");
+  background-position: -1.07vw top;
+  background-size: 101.87vw auto;
+}
+
+/* The mobile frame turns this card's artwork through 180 degrees. A
+   background image cannot be rotated, so a pseudo-element carries the
+   turned copy and sits behind the card's own content. */
+.step-03 {
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+  background-image: url("../images/img_step_03.jpg");
+}
+
+.step-03::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/img_step_03.jpg");
+  background-position: -3.2vw top;
+  background-size: 104.27vw auto;
+  transform: rotate(180deg);
+  z-index: -1;
+  content: "";
+}
+
+/* Mobile fills the fourth card with the hero artwork rather than
+   img_step_04 - measured off the export, not assumed. */
+.step-04 {
+  background-image: url("../images/bg_hero.jpg");
+  background-position: -71.73vw -81.33vw;
+  background-size: 261.87vw auto;
+}
 
 .step-number {
   font-family: var(--font-display);
@@ -363,20 +431,25 @@ h3 {
   color: var(--color-text-primary);
 }
 
+/* The design breaks these four paragraphs at points that only hold for a
+   box between 270px and 280px wide, so 275 sits safely in the middle. */
 .step-text {
   margin-top: 3rem;
-  max-width: 29rem;
+  max-width: 27.5rem;
 }
 
 /* =========================================================
    11. Objectives and tabs
    ========================================================= */
+/* 80px lands the eyebrow on y=2389, where the mobile design has it. */
 .objectives {
-  padding-top: 6rem;
+  padding-top: 8rem;
 }
 
+/* The design drops the squiggle onto its own line, clear of the heading -
+   -28px pulled it up far enough to strike through "objectives". */
 .objectives-squiggle {
-  margin-top: -2.8rem;
+  margin-top: -0.1rem;
 }
 
 /* Mobile runs a different order from desktop: the closing
@@ -425,11 +498,12 @@ h3 {
 }
 
 .objectives-outro {
-  margin-top: 4rem;
+  margin-top: 1.2rem;
+  max-width: 32.3rem;
 }
 
 .objectives-tabs {
-  margin-top: 6.5rem;
+  margin-top: 3.6rem;
 }
 
 .objectives-col-1 {
@@ -501,15 +575,17 @@ h3 {
   padding: 5rem 0 6rem;
 }
 
+/* Same artwork as PC, but the mobile frame crops it left of centre:
+   the 1440x624 source is drawn at 1095x475 starting 260px in. */
 .expertise-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 48rem;
+  height: 47.5rem;
   background-image: url("../images/bg_expertise.jpg");
-  background-position: center;
-  background-size: cover;
+  background-position: -69.33vw top;
+  background-size: 292vw auto;
 }
 
 .expertise-grid {
@@ -620,14 +696,25 @@ h3 {
   padding: 0 var(--layout-margin-mobile);
 }
 
+/* 272px tall regardless of how many lines the copy runs to: the tag sits
+   at the top, the title and copy sit at the bottom, and the gap between
+   them absorbs the difference. */
 .project {
+  display: flex;
+  flex-direction: column;
+  height: 27.2rem;
   padding: 3rem var(--layout-margin-mobile) 3.5rem;
   background-position: center;
   background-size: cover;
 }
 
 .project-01 { background-image: url("../images/img_project_01.jpg"); }
-.project-02 { background-image: url("../images/img_project_02.jpg"); }
+
+.project-02 {
+  background-image: url("../images/img_project_02.jpg");
+  background-position: -4.8vw top;
+  background-size: 134.93vw auto;
+}
 .project-03 { background-image: url("../images/img_project_03.jpg"); }
 .project-04 { background-image: url("../images/img_project_04.jpg"); }
 .project-05 { background-image: url("../images/img_project_05.jpg"); }
@@ -638,7 +725,7 @@ h3 {
 }
 
 .project-title {
-  margin-top: 3.5rem;
+  margin-top: auto;
   font-size: var(--font-size-32);
 }
 
@@ -906,8 +993,17 @@ h3 {
     padding-bottom: 0;
   }
 
+  /* PC shows the artwork upright, so the rotated mobile copy is dropped
+     and the plain background comes back. */
   .hero-bg {
     height: 91.2rem;
+    background-image: url("../images/bg_hero.jpg");
+    background-position: center top;
+    background-size: cover;
+  }
+
+  .hero-bg::before {
+    display: none;
   }
 
   .hero-body {
@@ -1085,9 +1181,23 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* PC pins the copy a fixed distance below the numeral, so the mobile
+     top-and-bottom split is dropped. */
   .step {
-    padding: 10.4rem 4.8rem 0;
+    display: block;
     height: 28.8rem;
+    padding: 10.4rem 4.8rem 0;
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* PC shows both of these cards upright and with their own artwork. */
+  .step-03::before {
+    display: none;
+  }
+
+  .step-04 {
+    background-image: url("../images/img_step_04.jpg");
   }
 
   /* 40px at 1.25 gives the 50px box the design has, which is also
@@ -1169,8 +1279,9 @@ h3 {
   .objectives-outro {
     grid-column: 2 / span 2;
     grid-row: 4;
-    margin-top: 2.1rem;
     width: 74.87%;
+    max-width: none;
+    margin-top: 2.1rem;
   }
 
   .tab-list {
@@ -1239,6 +1350,8 @@ h3 {
 
   .expertise-bg {
     height: 62.4rem;
+    background-position: center;
+    background-size: cover;
   }
 
   .expertise-grid {
@@ -1350,9 +1463,13 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* PC spaces the card from the top, so the mobile bottom-anchoring goes. */
   .project {
+    display: block;
     height: var(--size-project-card-height);
     padding: 3.6rem 4.8rem 0;
+    background-position: center;
+    background-size: cover;
   }
 
   .project-title {

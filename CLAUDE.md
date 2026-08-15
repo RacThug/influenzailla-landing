@@ -157,6 +157,49 @@ position differs - and the Direction page, which carries the rules, has it align
 
 Do not reintroduce a negative offset on `.intro-grid`. Mobile was never affected.
 
+### Mobile artwork - same files, different crops
+
+Mobile does **not** need its own image exports. Every artwork block on the mobile frame is one
+of the existing files, re-cropped and in two cases re-oriented. This was measured by fitting
+each asset against `page-mobile.png` over all eight flip/rotate combinations; the error column
+is the mean absolute channel difference out of 255, so anything under about 2.5 is JPEG noise.
+
+| Mobile block | File | Orientation | Displayed size @375 | Offset | Error |
+| --- | --- | --- | --- | --- | --- |
+| Hero | `bg_hero.jpg` | 90° turn + horizontal flip | 513x810 | 0, 0 | 0.61 |
+| Step 01 | `img_step_01.jpg` | upright | 389x180 | -15, 0 | 0.72 |
+| Step 02 | `img_step_02.jpg` | upright | 382x180 | -4, 0 | 0.53 |
+| Step 03 | `img_step_03.jpg` | **180°** | 391x180 | -4, 0 | 0.60 |
+| Step 04 | **`bg_hero.jpg`** | upright | 982x622 | -269, -305 | 2.03 |
+| Expertise | `bg_expertise.jpg` | upright | 1095x475 | -260, 0 | 1.94 |
+| Project 02 | `img_project_02.jpg` | upright | 506x273 | -18, 0 | 2.15 |
+
+The crops are written in `vw`, not `rem`. These blocks are full-bleed, and the single 768px
+breakpoint means the mobile rules cover every width from 320 up, so a fixed pixel crop leaves a
+bare strip on the right as soon as the screen passes 375.
+
+The hero cannot be done with `background-image` - that cannot be rotated - so `.hero-bg` clips a
+pseudo-element carrying the turned copy. Same technique for step 03.
+
+### Three places where the mobile frame contradicts the rest of the file
+
+The mobile frame is not internally consistent with the Design - Desktop and Direction pages.
+Decided case by case, not by one blanket rule:
+
+- **Step 03 turned 180° and step 04 filled with the hero artwork** - followed. Nothing else in
+  the file contradicts them, every other mobile block was demonstrably re-cropped by hand, and
+  the brief grades on pixel match against Figma.
+- **Project card 1** - *not* followed. The mobile frame gives it `img_project_04` turned 180°
+  **and** step 01's body copy, while the Direction page - the authoritative slider spec - says
+  "We worked with a local health food store...". Two mismatches on one card make it a stale
+  duplicate, not art direction. The card keeps `img_project_01` and the Direction copy.
+- **Eyebrow reading "Since 2006"** - not followed. Design - Desktop says "London 2006", which is
+  what ships. Verified pixel-for-pixel against the desktop export.
+
+Desktop was checked against the same fitting method and is correct throughout: card 1 to
+`img_project_01` (0.99), card 2 to `img_project_02` (0.64), step 3 to `img_step_03` (0.80), all
+upright.
+
 ### Tabbing section - Branding / Design / Marketing
 
 Three tabs sharing one panel. The active tab title carries the full brand gradient; the other
