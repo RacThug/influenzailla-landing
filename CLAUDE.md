@@ -145,6 +145,15 @@ is not a sufficient reference on its own.
 Any section that does not fill the screen is capped: **1250px** on desktop, **335px** on mobile.
 This is an explicit instruction, not a measurement. `.wrapper` implements it.
 
+The mobile figure is a real cap, not a by-product of the 20px padding at a 375px viewport. The
+single 768px breakpoint means the mobile rules run from 320 all the way up, and without the cap
+the text column keeps widening: at 425 the headings re-wrap onto fewer lines and every squiggle
+slides out from under the word it marks. With it, the column stays 335 and centres, and the
+layout holds its proportions from 375 to 767.
+
+Sections that *do* fill the screen opt out with `max-width: none` - the step cards and the
+project cards run edge to edge at every width.
+
 ### The "3d" section is aligned like every other section
 
 The section headed *"We turn your digital dreams into reality"* (Figma frame `3d`, node

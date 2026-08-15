@@ -83,10 +83,15 @@ h3 {
    4. Layout
    At 375px this leaves exactly the 335px container the
    Direction page calls for; at 1440px, exactly 1250px.
+
+   The mobile cap is a cap, not an artefact of the padding. Without it the
+   column keeps growing past 375 and the headings re-wrap, which drags every
+   rule out from under the word it marks.
    ========================================================= */
 .wrapper {
   position: relative;
   width: 100%;
+  max-width: var(--layout-mobile);
   margin: 0 auto;
   padding: 0 var(--layout-margin-mobile);
 }
@@ -148,6 +153,7 @@ h3 {
   position: relative;
   z-index: 2;
   width: 100%;
+  max-width: var(--layout-mobile);
   margin: 0 auto;
   padding: 3rem var(--layout-margin-mobile) 0;
 }
@@ -234,7 +240,7 @@ h3 {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: var(--layout-canvas);
+  max-width: var(--layout-mobile);
   margin: 0 auto;
   padding: 0 var(--layout-margin-mobile);
 }
@@ -393,8 +399,9 @@ h3 {
   margin-top: 8.3rem;
 }
 
-/* Full-bleed on mobile: the cards run edge to edge. */
+/* Full-bleed on mobile: the cards run edge to edge, so the 335 cap is off. */
 .steps .wrapper {
+  max-width: none;
   padding: 0;
 }
 
@@ -728,6 +735,7 @@ h3 {
 
 /* Full-bleed project cards on mobile. */
 .projects .wrapper {
+  max-width: none;
   padding: 0;
 }
 
