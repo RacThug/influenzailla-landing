@@ -344,7 +344,7 @@ h3 {
    slack this takes comes straight back off .steps below, so everything
    from the cards down keeps its place. */
 .intro {
-  padding-top: 11.2rem;
+  padding-top: 4.2rem;
 }
 
 .intro-lede p + p,
@@ -357,7 +357,7 @@ h3 {
 }
 
 .intro-eyebrow {
-  margin-top: 4rem;
+  margin-top: 6.4rem;
 }
 
 .intro-title {
@@ -375,9 +375,10 @@ h3 {
 .intro-body {
   margin-top: 4.2rem;
 }
-
+/* Mobile opens the section with the stars; PC places them in the grid at
+   the foot of the last column instead. */
 .intro-stars {
-  margin-top: 4rem;
+  margin-bottom: 1.8rem;
 }
 
 .since {
@@ -387,9 +388,9 @@ h3 {
 /* =========================================================
    10. Steps 01-04
    ========================================================= */
-/* 15px puts the first card at y=1590, where the mobile design has it. */
+/* 83px puts the first card at y=1590, where the mobile design has it. */
 .steps {
-  margin-top: 1.5rem;
+  margin-top: 8.3rem;
 }
 
 /* Full-bleed on mobile: the cards run edge to edge. */

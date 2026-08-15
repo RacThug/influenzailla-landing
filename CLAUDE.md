@@ -200,6 +200,16 @@ Desktop was checked against the same fitting method and is correct throughout: c
 `img_project_01` (0.99), card 2 to `img_project_02` (0.64), step 3 to `img_step_03` (0.80), all
 upright.
 
+### Mobile reorders two sections
+
+Mobile does not just restack the desktop columns; two sections put their pieces in a different
+order, and the DOM follows mobile because every child is placed explicitly on PC.
+
+- **Intro** - the star group opens the section, above the lede. On PC it sits at the foot of
+  the first column instead.
+- **Objectives** - the closing paragraph sits above the tabs, and the two-column body below
+  them.
+
 ### Squiggles mark one word each
 
 Every wave rule is exactly as wide as the word it marks and sits tight against it. It is not a
