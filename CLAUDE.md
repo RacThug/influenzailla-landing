@@ -231,8 +231,8 @@ Both are the same path at the same size; only the fill differs. Editing one mean
 The brand gradient is painted across the element box and clipped to the glyphs, so a short word
 in a full-width box shows only the pale opening of the ramp and reads as plain white. Anything
 short that carries `.text-gradient` needs its box brought in: `.hero-year` uses `display: table`,
-`.project-tag` uses `align-self` with a measured `min-width`, and every squiggle has an explicit
-width. Check any new gradient text against the export before assuming it is right.
+`.project-tag` uses `align-self` with a measured `min-width`, and every wave rule has an
+explicit width. Check any new gradient text against the export before assuming it is right.
 
 ### Mobile reorders two sections
 
@@ -244,27 +244,33 @@ order, and the DOM follows mobile because every child is placed explicitly on PC
 - **Objectives** - the closing paragraph sits above the tabs, and the two-column body below
   them.
 
-### Squiggles mark one word each
+### Squiggles are drawn from the word they mark
 
-Every wave rule is exactly as wide as the word it marks and sits tight against it. It is not a
-generic divider, so its length is never arbitrary.
+Every wave rule belongs to one word. It is a `::before` on a `<span class="mark ...">` around
+that word, not an element placed on the grid - the headings re-wrap anywhere between 768 and
+1440, and a rule positioned by percentage slides off its word the moment they do. Anchored to
+the word, it follows.
 
-| Rule | Marks | PC width | Mobile width |
-| --- | --- | --- | --- |
-| Hero | "your" | 140px | 86px |
-| Intro | "reality" | 237px | 113px |
-| Objectives | "objectives" | 195px | 186px |
-| Expertise | "and" on PC, "experience" on mobile | 113px | 195px |
-| Projects | "our" | 103px | 103px |
+PC and mobile mark different words in three of the five sections, so both words carry a span and
+only one is lit per breakpoint.
 
-PC draws all five at 48px. Mobile draws four of them at 32px and leaves only the projects rule
-at 48px - which is why that one is the same width on both breakpoints and is set once. Because the size differs, the same width needs a different number of waves per
-breakpoint, and one shared `<p>` cannot carry two counts. So each rule holds 24 waves - more
-than any breakpoint needs - and `.squiggle` sets `overflow: hidden` with an explicit width per
-rule per breakpoint. The width also bounds the `background-clip: text` gradient, which is what
-makes each rule read as belonging to the word above it.
+| Rule | PC marks | Mobile marks | PC width | Mobile width |
+| --- | --- | --- | --- | --- |
+| Hero | "your", above | "your", above | 140px | 86px |
+| Intro | "dreams", below | "reality", below | 237px | 113px |
+| Objectives | "achive", above | "objectives", below | 195px | 186px |
+| Expertise | "and", above | "experience", below | 113px | 195px |
+| Projects | "our", above | "Projects", above | 103px | 103px |
 
-Changing a rule's width means re-measuring the word, not guessing a wave count.
+PC draws all five at 48px; mobile draws four at 32px and keeps the projects rule at 48px, which
+is why that one is the same width on both and is set once.
+
+Each rule holds 24 waves - more than any breakpoint needs - and the width trims it. That width
+also bounds the `background-clip: text` gradient, which is what makes the rule read as belonging
+to its word. The line box is as tall as the type, so `bottom: 100%` alone parks the rule a full
+box clear of the word; the negative margins bring it back down onto it.
+
+Changing a rule means re-measuring the word, not guessing a wave count.
 
 ### Tabbing section - Branding / Design / Marketing
 
